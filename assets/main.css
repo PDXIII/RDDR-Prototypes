@@ -22,3 +22,6 @@
 .attribute_left {
   text-align: right;
 }
+.colorLayer {
+  border-radius: 50%;
+}

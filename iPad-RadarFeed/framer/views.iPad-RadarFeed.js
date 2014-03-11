@@ -282,7 +282,7 @@ window.FramerPS['iPad-RadarFeed'] = [
                     "name": "Information01",
                     "layerFrame": {
                       "x": 541,
-                      "y": 463,
+                      "y": 465,
                       "width": 198,
                       "height": 47
                     },
@@ -291,7 +291,7 @@ window.FramerPS['iPad-RadarFeed'] = [
                       "path": "images/Information01.png",
                       "frame": {
                         "x": 541,
-                        "y": 463,
+                        "y": 465,
                         "width": 198,
                         "height": 47
                       }
