@@ -10,50 +10,10 @@ for (var layerGroupName in PSD) {
 var holdCounter = 0;
 var menuVisible = false;
 var maxDistance = 155;
-var triggerOffset = 20;
+var triggerOffset = 10;
+var globalAnimationTime = 100;
+var globalAnimationCurve = 'spring(400,10,500)';
 var globalDirection, globalDistance;
-
-function openMenu(_time, _curve){
-	Scene.animate({
-		properties: {
-			x: Scene.originalFrame.x + 300
-		},
-		time: _time,
-		curve: _curve
-	});
-	menuVisible = true;
-};
-
-function closeMenu(_time, _curve){
-	Scene.animate({
-		properties: {
-			x: Scene.originalFrame.x
-		},
-		time: _time,
-		curve: _curve
-	});
-	menuVisible = false;
-};
-
-MenuButton.on('click', function () {
-	var time = 250;
-	var curve = 'ease-in-out';
-	if(!menuVisible){
-		openMenu(time, curve);
-	}
-	else{
-		closeMenu(time, curve);
-	}
-});
-
-
-Attribut_left01.html = 'komplex';
-Attribut_right01.html = 'einfach';
-
-Attribut_left01.addClass('attribute_left');
-Attribut_right01.addClass('attribute_right');
-
-// ColorLayer.opacity = 0;
 
 var ColorLayer = new View({
   width: 235,
@@ -66,6 +26,56 @@ var ColorLayer = new View({
   },
 });
 
+MenuButton.on('click', function () {
+	var time = 250;
+	var curve = 'ease-in-out';
+	if(!menuVisible){
+		openMenu(time, curve);
+	}
+	else{
+		closeMenu(time, curve);
+	}
+});
+
+Attribut_left01.animate({
+	properties:{
+		scale: .5
+	},
+	time:0,
+	origin: '100% 50%'
+});
+
+Attribut_right01.animate({
+	properties:{
+		scale: .5,
+	},
+	time:0,
+	origin: '0% 50%'
+});
+
+Information01.animate({
+	properties:{
+		scale: 0,
+	},
+	time:0,
+	origin: '50% 50%'
+});
+
+Skip01.animate({
+	properties:{
+		scale: 0,
+	},
+	time:0,
+	origin: '50% 50%'
+});
+// Attribut_left01.html = 'komplex';
+// Attribut_right01.html = 'einfach';
+// Attribut_left01.addClass('attribute_left');
+// Attribut_right01.addClass('attribute_right');
+
+// ColorLayer.opacity = 0;
+
+
 Object01.addSubView(ColorLayer);
 ColorLayer.addClass('colorLayer');
 
@@ -77,37 +87,48 @@ Object01.on(Events.DragMove, function () {
 	var direction = getDirection(Object01);
 	var distance;
 
+	if(direction[0] === 'x'){
+		Object01.y = 0;
+	}
+	else{
+		Object01.x = 0;
+	}
+
 	switch(direction[1]){
 		case 'left':
+			// Object01.y = 0;
 			distance = getXDistance(Object01);
-			Object01.y = 0;
-			Attribut_left01.style ={
-				fontSize: getFontsize(distance)
-			}
+			// Attribut_left01.style ={
+				// fontSize: getFontsize(distance)
+			// }
+			Attribut_left01.scale = getScaleFactor(distance, .5);
 			if(distance >= maxDistance ){
 				Object01.x = -maxDistance;
 			}
 			break;
 		case 'right':
+			// Object01.y = 0;
 			distance = getXDistance(Object01);
-			Object01.y = 0;
-			Attribut_right01.style ={
-				fontSize: getFontsize(distance)
-			}
+			// Attribut_right01.style ={
+				// fontSize: getFontsize(distance)
+			// }
+			Attribut_right01.scale = getScaleFactor(distance, .5);
 			if(distance >= maxDistance ){
 				Object01.x = maxDistance;
 			}
 			break;
 		case 'up':
+			// Object01.x = 0;
 			distance = getYDistance(Object01);
-			Object01.x = 0;
+			Information01.scale = getScaleFactor(distance, 0);
 			if(distance >= maxDistance ){
 				Object01.y = -maxDistance;
 				}
 			break;
 		case 'down':
+			// Object01.x = 0;
 			distance = getYDistance(Object01);
-			Object01.x = 0;
+			Skip01.scale = getScaleFactor(distance, 0);
 			if(distance >= maxDistance ){
 				Object01.y = maxDistance;
 				}
@@ -136,8 +157,7 @@ Object01.dragger.on(Events.DragEnd, function () {
 					properties: {
 						x: -400
 					},
-					time: 300,
-					curve: 'spring(200,10,500)'
+					curve: globalAnimationCurve
 				});
 				break;
 			case 'right':
@@ -145,8 +165,7 @@ Object01.dragger.on(Events.DragEnd, function () {
 					properties: {
 						x: 400
 					},
-					time: 300,
-					curve: 'spring(200,10,500)'
+					curve: globalAnimationCurve
 				});
 				break;
 			case 'up':
@@ -154,8 +173,7 @@ Object01.dragger.on(Events.DragEnd, function () {
 					properties: {
 						y: -400
 					},
-					time: 300,
-					curve: 'spring(200,10,500)'
+					curve: globalAnimationCurve
 				});
 				break;
 			case 'down':
@@ -163,8 +181,7 @@ Object01.dragger.on(Events.DragEnd, function () {
 					properties: {
 						y: 400
 					},
-					time: 300,
-					curve: 'spring(200,10,500)'
+					curve: globalAnimationCurve
 				});
 				break;
 		}
@@ -175,12 +192,46 @@ Object01.dragger.on(Events.DragEnd, function () {
 				x: Object01.originalFrame.x,
 				y: Object01.originalFrame.y
 			},
-			time: 100,
-			curve: 'spring(200,10,500)'
+			curve: globalAnimationCurve
 		});
 
-		Attribut_left01.style.fontSize = '24px';
-		Attribut_right01.style.fontSize = '24px';
+		// Attribut_left01.style.fontSize = '24px';
+		// Attribut_right01.style.fontSize = '24px';
+
+		switch(globalDirection[1]){
+			case 'left':
+				Attribut_left01.animate({
+					properties:{
+						scale: .5
+					},
+					curve: globalAnimationCurve
+				});
+				break;
+			case 'right':
+				Attribut_right01.animate({
+					properties:{
+						scale: .5
+					},
+					curve: globalAnimationCurve
+				});
+				break;
+			case 'up':
+				Information01.animate({
+					properties:{
+						scale: 0
+					},
+					curve: globalAnimationCurve
+				});
+				break;
+			case 'down':
+				Skip01.animate({
+					properties:{
+						scale: 0
+					},
+					curve: globalAnimationCurve
+				});
+				break;
+		}
 	}
 	
 });
@@ -190,6 +241,7 @@ function getDirection(_currObj) {
 	// horizontal
 	if( getXDistance(_currObj) > getYDistance(_currObj)){
 		direction.push('x');
+		// _currObj.y = 0;
 		// left
 		if (_currObj.originalFrame.x > _currObj.frame.x) {
 			direction.push('left');
@@ -202,6 +254,7 @@ function getDirection(_currObj) {
 	// vertikal
 	else{
 		direction.push('y');
+		// _currObj.x = 0;
 		// up
 		if (_currObj.originalFrame.y > _currObj.frame.y) {
 			direction.push('up');
@@ -232,3 +285,40 @@ var getFontsize = function(_distance){
 	console.log(attrFontSize);
 	return attrFontSize;
 }
+
+var getScaleFactor = function(_distance, _low2){
+	var value = _distance;
+	var low1 = 0;
+	var high1 = maxDistance;
+	// var low2 = .5;
+	var low2 = _low2;
+	var high2 = 1;
+
+	return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
+}
+
+function map_range(value, low1, high1, low2, high2) {
+    return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
+}
+
+function openMenu(_time, _curve){
+	Scene.animate({
+		properties: {
+			x: Scene.originalFrame.x + 300
+		},
+		time: _time,
+		curve: _curve
+	});
+	menuVisible = true;
+};
+
+function closeMenu(_time, _curve){
+	Scene.animate({
+		properties: {
+			x: Scene.originalFrame.x
+		},
+		time: _time,
+		curve: _curve
+	});
+	menuVisible = false;
+};

@@ -167,7 +167,7 @@ window.FramerPS['iPad-RadarFeed'] = [
                       "x": 460,
                       "y": 184,
                       "width": 360,
-                      "height": 112
+                      "height": 124
                     },
                     "maskFrame": null,
                     "children": [
@@ -195,19 +195,19 @@ window.FramerPS['iPad-RadarFeed'] = [
                       {
                         "name": "Attribut_right01",
                         "layerFrame": {
-                          "x": 676,
-                          "y": 265,
-                          "width": 141,
-                          "height": 31
+                          "x": 665,
+                          "y": 246,
+                          "width": 155,
+                          "height": 62
                         },
                         "maskFrame": null,
                         "image": {
                           "path": "images/Attribut_right01.png",
                           "frame": {
-                            "x": 676,
-                            "y": 265,
-                            "width": 141,
-                            "height": 31
+                            "x": 665,
+                            "y": 246,
+                            "width": 155,
+                            "height": 62
                           }
                         },
                         "imageType": "png",
@@ -216,19 +216,19 @@ window.FramerPS['iPad-RadarFeed'] = [
                       {
                         "name": "Attribut_left01",
                         "layerFrame": {
-                          "x": 462,
-                          "y": 265,
-                          "width": 141,
-                          "height": 31
+                          "x": 460,
+                          "y": 246,
+                          "width": 155,
+                          "height": 62
                         },
                         "maskFrame": null,
                         "image": {
                           "path": "images/Attribut_left01.png",
                           "frame": {
-                            "x": 462,
-                            "y": 265,
-                            "width": 141,
-                            "height": 31
+                            "x": 460,
+                            "y": 246,
+                            "width": 155,
+                            "height": 62
                           }
                         },
                         "imageType": "png",
@@ -237,18 +237,18 @@ window.FramerPS['iPad-RadarFeed'] = [
                       {
                         "name": "Label01",
                         "layerFrame": {
-                          "x": 604,
-                          "y": 271,
-                          "width": 68,
+                          "x": 603,
+                          "y": 266,
+                          "width": 74,
                           "height": 23
                         },
                         "maskFrame": null,
                         "image": {
                           "path": "images/Label01.png",
                           "frame": {
-                            "x": 604,
-                            "y": 271,
-                            "width": 68,
+                            "x": 603,
+                            "y": 266,
+                            "width": 74,
                             "height": 23
                           }
                         },
@@ -260,19 +260,19 @@ window.FramerPS['iPad-RadarFeed'] = [
                   {
                     "name": "Skip01",
                     "layerFrame": {
-                      "x": 541,
-                      "y": 376,
-                      "width": 198,
-                      "height": 47
+                      "x": 491,
+                      "y": 416,
+                      "width": 298,
+                      "height": 62
                     },
                     "maskFrame": null,
                     "image": {
                       "path": "images/Skip01.png",
                       "frame": {
-                        "x": 541,
-                        "y": 376,
-                        "width": 198,
-                        "height": 47
+                        "x": 491,
+                        "y": 416,
+                        "width": 298,
+                        "height": 62
                       }
                     },
                     "imageType": "png",
@@ -281,19 +281,19 @@ window.FramerPS['iPad-RadarFeed'] = [
                   {
                     "name": "Information01",
                     "layerFrame": {
-                      "x": 541,
-                      "y": 465,
-                      "width": 198,
-                      "height": 47
+                      "x": 491,
+                      "y": 416,
+                      "width": 298,
+                      "height": 62
                     },
                     "maskFrame": null,
                     "image": {
                       "path": "images/Information01.png",
                       "frame": {
-                        "x": 541,
-                        "y": 465,
-                        "width": 198,
-                        "height": 47
+                        "x": 491,
+                        "y": 416,
+                        "width": 298,
+                        "height": 62
                       }
                     },
                     "imageType": "png",
