@@ -13,9 +13,9 @@ window.FramerPS['iPad-Stream'] = [
       {
         "name": "Application",
         "layerFrame": {
-          "x": 447,
+          "x": 446,
           "y": 1,
-          "width": 736,
+          "width": 737,
           "height": 722
         },
         "maskFrame": {
@@ -27,9 +27,9 @@ window.FramerPS['iPad-Stream'] = [
         "image": {
           "path": "images/Application.png",
           "frame": {
-            "x": 447,
+            "x": 446,
             "y": 1,
-            "width": 736,
+            "width": 737,
             "height": 722
           }
         },
@@ -59,18 +59,18 @@ window.FramerPS['iPad-Stream'] = [
           {
             "name": "Scene",
             "layerFrame": {
-              "x": 447,
+              "x": 446,
               "y": 1,
-              "width": 736,
+              "width": 737,
               "height": 722
             },
             "maskFrame": null,
             "image": {
               "path": "images/Scene.png",
               "frame": {
-                "x": 447,
+                "x": 446,
                 "y": 1,
-                "width": 736,
+                "width": 737,
                 "height": 722
               }
             },
@@ -79,12 +79,22 @@ window.FramerPS['iPad-Stream'] = [
               {
                 "name": "TopBar",
                 "layerFrame": {
-                  "x": 447,
-                  "y": 104,
-                  "width": 385,
-                  "height": 78
+                  "x": 446,
+                  "y": 103,
+                  "width": 386,
+                  "height": 79
                 },
                 "maskFrame": null,
+                "image": {
+                  "path": "images/TopBar.png",
+                  "frame": {
+                    "x": 446,
+                    "y": 103,
+                    "width": 386,
+                    "height": 79
+                  }
+                },
+                "imageType": "png",
                 "children": [
                   {
                     "name": "MenuButton",
@@ -110,19 +120,19 @@ window.FramerPS['iPad-Stream'] = [
                   {
                     "name": "H1",
                     "layerFrame": {
-                      "x": 447,
-                      "y": 104,
-                      "width": 385,
-                      "height": 78
+                      "x": 491,
+                      "y": 160,
+                      "width": 298,
+                      "height": 18
                     },
                     "maskFrame": null,
                     "image": {
                       "path": "images/H1.png",
                       "frame": {
-                        "x": 447,
-                        "y": 104,
-                        "width": 385,
-                        "height": 78
+                        "x": 491,
+                        "y": 160,
+                        "width": 298,
+                        "height": 18
                       }
                     },
                     "imageType": "png",

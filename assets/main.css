@@ -42,6 +42,16 @@
   text-shadow: -1px -1px -1px #bd10e0;
   letter-spacing: .04em;
 }
+.boldTypeCreme {
+  color: #fffaf2;
+  font-family: 'PT_Sans-Narrow Bold';
+  letter-spacing: .04em;
+}
+.regularTypeCreme {
+  color: #fffaf2;
+  font-family: 'PT_Sans-Narrow Regular';
+  letter-spacing: .04em;
+}
 .mainQuestion {
   color: #172d4d;
   font-family: 'PT_Sans-Narrow Regular';
@@ -81,7 +91,8 @@
 .infoGui,
 .resultlabel,
 .label,
-.infoHeadline {
+.infoHeadline,
+.objName {
   text-align: center;
 }
 .label {
@@ -158,4 +169,14 @@
 }
 .infoView {
   background-color: #fffaf2;
+}
+.descriptionText {
+  line-height: 1.2em;
+}
+.objName {
+  color: #fffaf2;
+  font-family: 'PT_Sans-Narrow Regular';
+  letter-spacing: .04em;
+  font-size: 17px;
+  line-heigth: 17px;
 }

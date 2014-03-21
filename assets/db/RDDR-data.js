@@ -35,7 +35,7 @@ var db = {
 			"images": [
 				"SmallCabin-00.png"
 			],
-			"description": "here’s a little story that must be told",
+			"description": "Bevor Sie diesen Text lesen, sollten Sie unbedingt zwei Dinge tun. Erstens sollten Sie der Agentur noch einmal ausdrücklich versichern, daß Sie diese Anzeige für das Beste halten, was Sie je gesehen haben, und noch heute einen langfristigen Vertrag abschließen möchten. Zweitens sollten Sie davon ausgehen, daß diese Anzeige über Nacht entstanden ist und deshalb noch stark verbessert werden kann. Am Layout wird noch ein bißchen gedreht, das Logo wird noch einen Tick größer und der Text, der hier stehen soll, wird kein Tippfehler haben.",
 			"colors":[
 				"#fff",
 				"#eee",
@@ -75,7 +75,7 @@ var db = {
 			"images": [
 				"SmallCabin-01.png"
 			],
-			"description": "here’s a little story that must be told",
+			"description": "Bevor Sie diesen Text lesen, sollten Sie unbedingt zwei Dinge tun. Erstens sollten Sie der Agentur noch einmal ausdrücklich versichern, daß Sie diese Anzeige für das Beste halten, was Sie je gesehen haben, und noch heute einen langfristigen Vertrag abschließen möchten. Zweitens sollten Sie davon ausgehen, daß diese Anzeige über Nacht entstanden ist und deshalb noch stark verbessert werden kann. Am Layout wird noch ein bißchen gedreht, das Logo wird noch einen Tick größer und der Text, der hier stehen soll, wird kein Tippfehler haben.",
 			"colors":[
 				"#fff",
 				"#eee",
@@ -115,7 +115,7 @@ var db = {
 			"images": [
 				"SmallCabin-02.png"
 			],
-			"description": "here’s a little story that must be told",
+			"description": "Bevor Sie diesen Text lesen, sollten Sie unbedingt zwei Dinge tun. Erstens sollten Sie der Agentur noch einmal ausdrücklich versichern, daß Sie diese Anzeige für das Beste halten, was Sie je gesehen haben, und noch heute einen langfristigen Vertrag abschließen möchten. Zweitens sollten Sie davon ausgehen, daß diese Anzeige über Nacht entstanden ist und deshalb noch stark verbessert werden kann. Am Layout wird noch ein bißchen gedreht, das Logo wird noch einen Tick größer und der Text, der hier stehen soll, wird kein Tippfehler haben.",
 			"colors":[
 				"#fff",
 				"#eee",
@@ -155,7 +155,7 @@ var db = {
 			"images": [
 				"SmallCabin-03.png"
 			],
-			"description": "here’s a little story that must be told",
+			"description": "Bevor Sie diesen Text lesen, sollten Sie unbedingt zwei Dinge tun. Erstens sollten Sie der Agentur noch einmal ausdrücklich versichern, daß Sie diese Anzeige für das Beste halten, was Sie je gesehen haben, und noch heute einen langfristigen Vertrag abschließen möchten. Zweitens sollten Sie davon ausgehen, daß diese Anzeige über Nacht entstanden ist und deshalb noch stark verbessert werden kann. Am Layout wird noch ein bißchen gedreht, das Logo wird noch einen Tick größer und der Text, der hier stehen soll, wird kein Tippfehler haben.",
 			"colors":[
 				"#fff",
 				"#eee",
@@ -195,7 +195,7 @@ var db = {
 			"images": [
 				"SmallCabin-04.png"
 			],
-			"description": "here’s a little story that must be told",
+			"description": "Bevor Sie diesen Text lesen, sollten Sie unbedingt zwei Dinge tun. Erstens sollten Sie der Agentur noch einmal ausdrücklich versichern, daß Sie diese Anzeige für das Beste halten, was Sie je gesehen haben, und noch heute einen langfristigen Vertrag abschließen möchten. Zweitens sollten Sie davon ausgehen, daß diese Anzeige über Nacht entstanden ist und deshalb noch stark verbessert werden kann. Am Layout wird noch ein bißchen gedreht, das Logo wird noch einen Tick größer und der Text, der hier stehen soll, wird kein Tippfehler haben.",
 			"colors":[
 				"#fff",
 				"#eee",
@@ -235,7 +235,7 @@ var db = {
 			"images": [
 				"SmallCabin-05.png"
 			],
-			"description": "here’s a little story that must be told",
+			"description": "Bevor Sie diesen Text lesen, sollten Sie unbedingt zwei Dinge tun. Erstens sollten Sie der Agentur noch einmal ausdrücklich versichern, daß Sie diese Anzeige für das Beste halten, was Sie je gesehen haben, und noch heute einen langfristigen Vertrag abschließen möchten. Zweitens sollten Sie davon ausgehen, daß diese Anzeige über Nacht entstanden ist und deshalb noch stark verbessert werden kann. Am Layout wird noch ein bißchen gedreht, das Logo wird noch einen Tick größer und der Text, der hier stehen soll, wird kein Tippfehler haben.",
 			"colors":[
 				"#fff",
 				"#eee",
@@ -275,7 +275,7 @@ var db = {
 			"images": [
 				"SmallCabin-06.png"
 			],
-			"description": "here’s a little story that must be told",
+			"description": "Bevor Sie diesen Text lesen, sollten Sie unbedingt zwei Dinge tun. Erstens sollten Sie der Agentur noch einmal ausdrücklich versichern, daß Sie diese Anzeige für das Beste halten, was Sie je gesehen haben, und noch heute einen langfristigen Vertrag abschließen möchten. Zweitens sollten Sie davon ausgehen, daß diese Anzeige über Nacht entstanden ist und deshalb noch stark verbessert werden kann. Am Layout wird noch ein bißchen gedreht, das Logo wird noch einen Tick größer und der Text, der hier stehen soll, wird kein Tippfehler haben.",
 			"colors":[
 				"#fff",
 				"#eee",
@@ -315,7 +315,7 @@ var db = {
 			"images": [
 				"SmallCabin-07.png"
 			],
-			"description": "here’s a little story that must be told",
+			"description": "Bevor Sie diesen Text lesen, sollten Sie unbedingt zwei Dinge tun. Erstens sollten Sie der Agentur noch einmal ausdrücklich versichern, daß Sie diese Anzeige für das Beste halten, was Sie je gesehen haben, und noch heute einen langfristigen Vertrag abschließen möchten. Zweitens sollten Sie davon ausgehen, daß diese Anzeige über Nacht entstanden ist und deshalb noch stark verbessert werden kann. Am Layout wird noch ein bißchen gedreht, das Logo wird noch einen Tick größer und der Text, der hier stehen soll, wird kein Tippfehler haben.",
 			"colors":[
 				"#fff",
 				"#eee",
@@ -355,7 +355,7 @@ var db = {
 			"images": [
 				"SmallCabin-08.png"
 			],
-			"description": "here’s a little story that must be told",
+			"description": "Bevor Sie diesen Text lesen, sollten Sie unbedingt zwei Dinge tun. Erstens sollten Sie der Agentur noch einmal ausdrücklich versichern, daß Sie diese Anzeige für das Beste halten, was Sie je gesehen haben, und noch heute einen langfristigen Vertrag abschließen möchten. Zweitens sollten Sie davon ausgehen, daß diese Anzeige über Nacht entstanden ist und deshalb noch stark verbessert werden kann. Am Layout wird noch ein bißchen gedreht, das Logo wird noch einen Tick größer und der Text, der hier stehen soll, wird kein Tippfehler haben.",
 			"colors":[
 				"#fff",
 				"#eee",
@@ -395,7 +395,7 @@ var db = {
 			"images": [
 				"SmallCabin-09.png"
 			],
-			"description": "here’s a little story that must be told",
+			"description": "Bevor Sie diesen Text lesen, sollten Sie unbedingt zwei Dinge tun. Erstens sollten Sie der Agentur noch einmal ausdrücklich versichern, daß Sie diese Anzeige für das Beste halten, was Sie je gesehen haben, und noch heute einen langfristigen Vertrag abschließen möchten. Zweitens sollten Sie davon ausgehen, daß diese Anzeige über Nacht entstanden ist und deshalb noch stark verbessert werden kann. Am Layout wird noch ein bißchen gedreht, das Logo wird noch einen Tick größer und der Text, der hier stehen soll, wird kein Tippfehler haben.",
 			"colors":[
 				"#fff",
 				"#eee",
@@ -435,7 +435,7 @@ var db = {
 			"images": [
 				"SmallCabin-10.png"
 			],
-			"description": "here’s a little story that must be told",
+			"description": "Bevor Sie diesen Text lesen, sollten Sie unbedingt zwei Dinge tun. Erstens sollten Sie der Agentur noch einmal ausdrücklich versichern, daß Sie diese Anzeige für das Beste halten, was Sie je gesehen haben, und noch heute einen langfristigen Vertrag abschließen möchten. Zweitens sollten Sie davon ausgehen, daß diese Anzeige über Nacht entstanden ist und deshalb noch stark verbessert werden kann. Am Layout wird noch ein bißchen gedreht, das Logo wird noch einen Tick größer und der Text, der hier stehen soll, wird kein Tippfehler haben.",
 			"colors":[
 				"#fff",
 				"#eee",
@@ -475,7 +475,7 @@ var db = {
 			"images": [
 				"SmallCabin-11.png"
 			],
-			"description": "here’s a little story that must be told",
+			"description": "Bevor Sie diesen Text lesen, sollten Sie unbedingt zwei Dinge tun. Erstens sollten Sie der Agentur noch einmal ausdrücklich versichern, daß Sie diese Anzeige für das Beste halten, was Sie je gesehen haben, und noch heute einen langfristigen Vertrag abschließen möchten. Zweitens sollten Sie davon ausgehen, daß diese Anzeige über Nacht entstanden ist und deshalb noch stark verbessert werden kann. Am Layout wird noch ein bißchen gedreht, das Logo wird noch einen Tick größer und der Text, der hier stehen soll, wird kein Tippfehler haben.",
 			"colors":[
 				"#fff",
 				"#eee",
@@ -515,7 +515,7 @@ var db = {
 			"images": [
 				"SmallCabin-12.png"
 			],
-			"description": "here’s a little story that must be told",
+			"description": "Bevor Sie diesen Text lesen, sollten Sie unbedingt zwei Dinge tun. Erstens sollten Sie der Agentur noch einmal ausdrücklich versichern, daß Sie diese Anzeige für das Beste halten, was Sie je gesehen haben, und noch heute einen langfristigen Vertrag abschließen möchten. Zweitens sollten Sie davon ausgehen, daß diese Anzeige über Nacht entstanden ist und deshalb noch stark verbessert werden kann. Am Layout wird noch ein bißchen gedreht, das Logo wird noch einen Tick größer und der Text, der hier stehen soll, wird kein Tippfehler haben.",
 			"colors":[
 				"#fff",
 				"#eee",
@@ -555,7 +555,7 @@ var db = {
 			"images": [
 				"SmallCabin-13.png"
 			],
-			"description": "here’s a little story that must be told",
+			"description": "Bevor Sie diesen Text lesen, sollten Sie unbedingt zwei Dinge tun. Erstens sollten Sie der Agentur noch einmal ausdrücklich versichern, daß Sie diese Anzeige für das Beste halten, was Sie je gesehen haben, und noch heute einen langfristigen Vertrag abschließen möchten. Zweitens sollten Sie davon ausgehen, daß diese Anzeige über Nacht entstanden ist und deshalb noch stark verbessert werden kann. Am Layout wird noch ein bißchen gedreht, das Logo wird noch einen Tick größer und der Text, der hier stehen soll, wird kein Tippfehler haben.",
 			"colors":[
 				"#fff",
 				"#eee",
@@ -595,7 +595,7 @@ var db = {
 			"images": [
 				"SmallCabin-14.png"
 			],
-			"description": "here’s a little story that must be told",
+			"description": "Bevor Sie diesen Text lesen, sollten Sie unbedingt zwei Dinge tun. Erstens sollten Sie der Agentur noch einmal ausdrücklich versichern, daß Sie diese Anzeige für das Beste halten, was Sie je gesehen haben, und noch heute einen langfristigen Vertrag abschließen möchten. Zweitens sollten Sie davon ausgehen, daß diese Anzeige über Nacht entstanden ist und deshalb noch stark verbessert werden kann. Am Layout wird noch ein bißchen gedreht, das Logo wird noch einen Tick größer und der Text, der hier stehen soll, wird kein Tippfehler haben.",
 			"colors":[
 				"#fff",
 				"#eee",
@@ -635,7 +635,7 @@ var db = {
 			"images": [
 				"SmallCabin-15.png"
 			],
-			"description": "here’s a little story that must be told",
+			"description": "Bevor Sie diesen Text lesen, sollten Sie unbedingt zwei Dinge tun. Erstens sollten Sie der Agentur noch einmal ausdrücklich versichern, daß Sie diese Anzeige für das Beste halten, was Sie je gesehen haben, und noch heute einen langfristigen Vertrag abschließen möchten. Zweitens sollten Sie davon ausgehen, daß diese Anzeige über Nacht entstanden ist und deshalb noch stark verbessert werden kann. Am Layout wird noch ein bißchen gedreht, das Logo wird noch einen Tick größer und der Text, der hier stehen soll, wird kein Tippfehler haben.",
 			"colors":[
 				"#fff",
 				"#eee",
@@ -675,7 +675,7 @@ var db = {
 			"images": [
 				"SmallCabin-16.png"
 			],
-			"description": "here’s a little story that must be told",
+			"description": "Bevor Sie diesen Text lesen, sollten Sie unbedingt zwei Dinge tun. Erstens sollten Sie der Agentur noch einmal ausdrücklich versichern, daß Sie diese Anzeige für das Beste halten, was Sie je gesehen haben, und noch heute einen langfristigen Vertrag abschließen möchten. Zweitens sollten Sie davon ausgehen, daß diese Anzeige über Nacht entstanden ist und deshalb noch stark verbessert werden kann. Am Layout wird noch ein bißchen gedreht, das Logo wird noch einen Tick größer und der Text, der hier stehen soll, wird kein Tippfehler haben.",
 			"colors":[
 				"#fff",
 				"#eee",
@@ -715,7 +715,7 @@ var db = {
 			"images": [
 				"SmallCabin-17.png"
 			],
-			"description": "here’s a little story that must be told",
+			"description": "Bevor Sie diesen Text lesen, sollten Sie unbedingt zwei Dinge tun. Erstens sollten Sie der Agentur noch einmal ausdrücklich versichern, daß Sie diese Anzeige für das Beste halten, was Sie je gesehen haben, und noch heute einen langfristigen Vertrag abschließen möchten. Zweitens sollten Sie davon ausgehen, daß diese Anzeige über Nacht entstanden ist und deshalb noch stark verbessert werden kann. Am Layout wird noch ein bißchen gedreht, das Logo wird noch einen Tick größer und der Text, der hier stehen soll, wird kein Tippfehler haben.",
 			"colors":[
 				"#fff",
 				"#eee",
@@ -755,7 +755,7 @@ var db = {
 			"images": [
 				"SmallCabin-18.png"
 			],
-			"description": "here’s a little story that must be told",
+			"description": "Bevor Sie diesen Text lesen, sollten Sie unbedingt zwei Dinge tun. Erstens sollten Sie der Agentur noch einmal ausdrücklich versichern, daß Sie diese Anzeige für das Beste halten, was Sie je gesehen haben, und noch heute einen langfristigen Vertrag abschließen möchten. Zweitens sollten Sie davon ausgehen, daß diese Anzeige über Nacht entstanden ist und deshalb noch stark verbessert werden kann. Am Layout wird noch ein bißchen gedreht, das Logo wird noch einen Tick größer und der Text, der hier stehen soll, wird kein Tippfehler haben.",
 			"colors":[
 				"#fff",
 				"#eee",
@@ -795,7 +795,7 @@ var db = {
 			"images": [
 				"SmallCabin-19.png"
 			],
-			"description": "here’s a little story that must be told",
+			"description": "Bevor Sie diesen Text lesen, sollten Sie unbedingt zwei Dinge tun. Erstens sollten Sie der Agentur noch einmal ausdrücklich versichern, daß Sie diese Anzeige für das Beste halten, was Sie je gesehen haben, und noch heute einen langfristigen Vertrag abschließen möchten. Zweitens sollten Sie davon ausgehen, daß diese Anzeige über Nacht entstanden ist und deshalb noch stark verbessert werden kann. Am Layout wird noch ein bißchen gedreht, das Logo wird noch einen Tick größer und der Text, der hier stehen soll, wird kein Tippfehler haben.",
 			"colors":[
 				"#fff",
 				"#eee",
@@ -835,7 +835,7 @@ var db = {
 			"images": [
 				"SmallCabin-20.png"
 			],
-			"description": "here’s a little story that must be told",
+			"description": "Bevor Sie diesen Text lesen, sollten Sie unbedingt zwei Dinge tun. Erstens sollten Sie der Agentur noch einmal ausdrücklich versichern, daß Sie diese Anzeige für das Beste halten, was Sie je gesehen haben, und noch heute einen langfristigen Vertrag abschließen möchten. Zweitens sollten Sie davon ausgehen, daß diese Anzeige über Nacht entstanden ist und deshalb noch stark verbessert werden kann. Am Layout wird noch ein bißchen gedreht, das Logo wird noch einen Tick größer und der Text, der hier stehen soll, wird kein Tippfehler haben.",
 			"colors":[
 				"#fff",
 				"#eee",

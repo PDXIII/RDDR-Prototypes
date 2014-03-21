@@ -242,6 +242,46 @@ function bigAnswer (_answers) {
 	});
 }
 
+function cangeHeadline (){
+	TopBar._subViews[0].animate({
+		properties: {
+			y: 0
+		},
+		curve: startCurve,
+		time: startTime
+	});
+
+	utils.delay(100, function (){
+		TopBar._subViews[2].animate({
+			properties: {
+				y: 50
+			},
+			curve: startCurve,
+			time: startTime
+		});
+	});
+};
+
+function cangeHeadlineBack (){
+	TopBar._subViews[2].animate({
+		properties: {
+			y: 80
+		},
+		curve: startCurve,
+		time: startTime
+	});
+
+	utils.delay(100, function (){
+		TopBar._subViews[0].animate({
+			properties: {
+				y: 50
+			},
+			curve: startCurve,
+			time: startTime
+		});
+	});
+};
+
 // is called by function dragObjDisappears()
 function changeMainQuestion (_mainQuestion) {
 	_mainQuestion.animate({
@@ -315,7 +355,8 @@ function dragObjDisappears (_dragObj) {
 				},
 				curve: globalAnimationCurve
 			});
-
+			showInfo();
+			dragObjReset(_dragObj);
 			// window.location.reload()
 			break;
 
@@ -342,6 +383,7 @@ function dragObjReset (_dragObj) {
 		},
 		curve: globalAnimationCurve
 	});
+	_dragObj._subViews[1].opacity = 0;
 
 	switch(globalDirection[1]) {
 		case 'left':
@@ -605,6 +647,14 @@ function makeDragObj (_objIndex) {
 
 // called by function makeObj()
 function makeInfo (_objIndex) {
+	var infoFrame = new View({
+		width: 384,
+		height: 1000,
+		x: 0,
+		y: 520
+	});
+
+
 	var currInfo = new View({
 		width: 384,
 		height: 1000,
@@ -612,17 +662,17 @@ function makeInfo (_objIndex) {
 		y: 0
 	});
 
-	var infoImage = new ImageView({
-		width: 174,
-		height: 174,
-		x: 102,
+	var backAction = new View({
+		width: 384,
+		height: 50,
+		x: 0,
 		y: 20,
-		image: '../assets/db/images/' + db.objects[_objIndex].images[0]
+		html: 'zurück'
 	});
-	infoImage.addClass('infoImage');
-	currInfo.addSubView(infoImage);
+	backAction.addClass('action');
+	currInfo.addSubView(backAction);
 
-	var infoButtonsRow = new View({
+		var infoButtonsRow = new View({
 		width: 384,
 		height: infoGuiSize[1],
 		x: 0,
@@ -643,6 +693,14 @@ function makeInfo (_objIndex) {
 		infoButton.opacity = 1;
 		textButton.opacity = 0.5;
 		dnaButton.opacity = 0.5;
+		currInfo.animate({
+			properties: {
+				y: 0
+			},
+			curve: startCurve,
+			time: startTime
+		});
+		$('.scrollField').scrollTop(0);
 	});
 	infoButton.addClass('infoButton infoGui');
 	infoButtonsRow.addSubView(infoButton);
@@ -652,13 +710,22 @@ function makeInfo (_objIndex) {
 		height: infoGuiSize[1],
 		x: 18 + 10 + 110,
 		y: 0,
-		html: 'Beschreibung'
+		html: 'Beschreibung',
+		opacity: 0.5
 	});
 
 	textButton.on('click',function () {
 		textButton.opacity = 1;
 		infoButton.opacity = 0.5;
 		dnaButton.opacity = 0.5;
+		currInfo.animate({
+			properties: {
+				y: -200
+			},
+			curve: startCurve,
+			time: startTime
+		});
+		$('.scrollField').scrollTop(195);
 	});
 	textButton.addClass('textButton infoGui');
 	infoButtonsRow.addSubView(textButton);
@@ -668,7 +735,8 @@ function makeInfo (_objIndex) {
 		height: infoGuiSize[1],
 		x: 18 + 2 * (10 + 110),
 		y: 0,
-		html: 'DNA'
+		html: 'DNA',
+		opacity: 0.5
 	});
 
 	dnaButton.on('click',function () {
@@ -676,12 +744,77 @@ function makeInfo (_objIndex) {
 		infoButton.opacity = 0.5;
 		textButton.opacity = 0.5;
 		console.log('scroll');
-		$('#63').animatescroll({scrollSpeed:2000,easing:'easeInOutCubic'});
-
-		// $('#63').animatescroll({element:'.scrollField',padding:20});
+		currInfo.animate({
+			properties: {
+				y: -200
+			},
+			curve: startCurve,
+			time: startTime
+		});
+		$('.scrollField').scrollTop(695);
 	});
 	dnaButton.addClass('dnaButton infoGui');
 	infoButtonsRow.addSubView(dnaButton);
+
+
+	var infoImage = new ImageView({
+		width: 174,
+		height: 174,
+		x: 102,
+		y: 60,
+		image: '../assets/db/images/' + db.objects[_objIndex].images[0]
+	});
+	infoImage.addClass('infoImage');
+	currInfo.addSubView(infoImage);
+
+	var colorLayer = new View({
+		width: 174,
+		height: 174,
+		x: 0,
+		y: 0,
+		opacity: 0
+	});
+	colorLayer.addClass('colorLayer');
+	infoImage.addSubView(colorLayer);
+
+	infoImage.originalFrame = infoImage.frame;
+	infoImage.originalFrame.y = 20;
+	// infoImage.on('click', function () {
+	// 	console.log('click the object');
+	// });
+
+	infoImage.dragger = new ui.Draggable(infoImage);
+	
+	infoImage.on(Events.DragMove, function () {
+		// limit to one axis
+		// console.log(infoImage.x + ' / ' + infoImage.y);
+		infoImage.x = 102;
+		if(infoImage.y <= 20){
+			infoImage.y = 20;
+		}else if( infoImage.y >= 60){
+			infoImage._subViews[0].opacity = .5;
+			infoImage.y = 60;
+		}else{
+			infoImage._subViews[0].opacity = 0;
+		}
+		console.log(getYDistance(infoImage));
+	});
+	
+	infoImage.dragger.on(Events.DragEnd, function () {
+		if(infoImage.y >= 60){
+			hideInfo();
+		}
+		else{
+			infoImage.animate({
+				properties: {
+					y: 20
+				},
+				curve: 'spring(200,10,10)'
+			})
+		}
+		infoImage._subViews[0].opacity = 0;
+	});
+
 
 	var scrollField = new ScrollView({
 		width: 386,
@@ -701,7 +834,7 @@ function makeInfo (_objIndex) {
 
 	var descriptionView = new View({
 		width: 348,
-		height: 200,
+		height: 400,
 		x: 18,
 		y: 200
 	});
@@ -711,8 +844,8 @@ function makeInfo (_objIndex) {
 	descriptionView.addSubView(addInfoHeadline('Beschreibung'));
 	var descriptionText = new View({
 		width: 348,
-		height: 170,
-		x: 18,
+		height: 400,
+		x: 0,
 		y: 30,
 		html: db.objects[_objIndex]['description']
 	});
@@ -722,9 +855,9 @@ function makeInfo (_objIndex) {
 
 	var dnaView = new View({
 		width: 348,
-		height: 500,
+		height: 800,
 		x: 18,
-		y: 385
+		y: 700
 	});
 
 	dnaView.addSubView(makeDNA(_objIndex, 0, 'Physikalische Erscheinung'));
@@ -733,7 +866,8 @@ function makeInfo (_objIndex) {
 	scrollField.addSubView(dnaView);
 
 	currInfo.addClass('infoView');
-	return currInfo;
+	infoFrame.addSubView(currInfo);
+	return infoFrame;
 }
 
 // is called by function animateResult()
@@ -772,6 +906,16 @@ function makeObj () {
 	var questionIndex = getRandomInt(0,1);
 	var pairIndex = getRandomInt(0,4);
 	var objIndex = getRandomInt(0,20);
+
+	var objName = new View({
+		width: 236,
+		height: 236,
+		x: 74,
+		y: 80,
+		html: db.objects[objIndex].name
+	});
+	objName.addClass('objName');
+	TopBar.addSubView(objName);
 
 	var currObj = new View({
 		width: 384,
@@ -1001,6 +1145,35 @@ function returnOpacity (_percentVal) {
 	// console.log( _percentVal / 100)
 	return _percentVal / 100;
 }
+
+function showInfo(){
+	cangeHeadline();
+	Scene._subViews[1]._subViews[5].animate({
+		properties: {
+			y: 0
+		},
+		curve: startCurve,
+		time: startTime
+	});
+	Scene._subViews[1]._subViews[5]._subViews[0]._subViews[2].animate({
+		properties: {
+			y:20
+		},
+		curve: 'spring(200,10,10)'
+	});
+}
+
+function hideInfo(){
+	Scene._subViews[1]._subViews[5].animate({
+		properties: {
+			y: 600
+		},
+		curve: startCurve,
+		time: startTime
+	});
+}
+
+
 
 $(document).ready(function () {
 	makeMenuBtn();
