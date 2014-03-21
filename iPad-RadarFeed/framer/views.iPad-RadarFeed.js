@@ -162,7 +162,7 @@ window.FramerPS['iPad-RadarFeed'] = [
                     "children": []
                   },
                   {
-                    "name": "Choice01",
+                    "name": "Choice",
                     "layerFrame": {
                       "x": 460,
                       "y": 184,
@@ -258,7 +258,7 @@ window.FramerPS['iPad-RadarFeed'] = [
                     ]
                   },
                   {
-                    "name": "Skip01",
+                    "name": "Skip",
                     "layerFrame": {
                       "x": 491,
                       "y": 416,
@@ -267,7 +267,7 @@ window.FramerPS['iPad-RadarFeed'] = [
                     },
                     "maskFrame": null,
                     "image": {
-                      "path": "images/Skip01.png",
+                      "path": "images/Skip.png",
                       "frame": {
                         "x": 491,
                         "y": 416,
@@ -279,7 +279,7 @@ window.FramerPS['iPad-RadarFeed'] = [
                     "children": []
                   },
                   {
-                    "name": "Information01",
+                    "name": "MoreInfo",
                     "layerFrame": {
                       "x": 491,
                       "y": 416,
@@ -288,7 +288,7 @@ window.FramerPS['iPad-RadarFeed'] = [
                     },
                     "maskFrame": null,
                     "image": {
-                      "path": "images/Information01.png",
+                      "path": "images/MoreInfo.png",
                       "frame": {
                         "x": 491,
                         "y": 416,
@@ -298,6 +298,102 @@ window.FramerPS['iPad-RadarFeed'] = [
                     },
                     "imageType": "png",
                     "children": []
+                  },
+                  {
+                    "name": "AddToCluster",
+                    "layerFrame": {
+                      "x": 491,
+                      "y": 416,
+                      "width": 298,
+                      "height": 62
+                    },
+                    "maskFrame": null,
+                    "image": {
+                      "path": "images/AddToCluster.png",
+                      "frame": {
+                        "x": 491,
+                        "y": 416,
+                        "width": 298,
+                        "height": 62
+                      }
+                    },
+                    "imageType": "png",
+                    "children": []
+                  },
+                  {
+                    "name": "Result",
+                    "layerFrame": {
+                      "x": 479,
+                      "y": 395,
+                      "width": 322,
+                      "height": 105
+                    },
+                    "maskFrame": null,
+                    "children": [
+                      {
+                        "name": "right",
+                        "layerFrame": {
+                          "x": 696,
+                          "y": 395,
+                          "width": 105,
+                          "height": 105
+                        },
+                        "maskFrame": null,
+                        "image": {
+                          "path": "images/right.png",
+                          "frame": {
+                            "x": 696,
+                            "y": 395,
+                            "width": 105,
+                            "height": 105
+                          }
+                        },
+                        "imageType": "png",
+                        "children": []
+                      },
+                      {
+                        "name": "middle",
+                        "layerFrame": {
+                          "x": 603,
+                          "y": 411,
+                          "width": 74,
+                          "height": 74
+                        },
+                        "maskFrame": null,
+                        "image": {
+                          "path": "images/middle.png",
+                          "frame": {
+                            "x": 603,
+                            "y": 411,
+                            "width": 74,
+                            "height": 74
+                          }
+                        },
+                        "imageType": "png",
+                        "children": []
+                      },
+                      {
+                        "name": "left",
+                        "layerFrame": {
+                          "x": 479,
+                          "y": 395,
+                          "width": 105,
+                          "height": 105
+                        },
+                        "maskFrame": null,
+                        "image": {
+                          "path": "images/left.png",
+                          "frame": {
+                            "x": 479,
+                            "y": 395,
+                            "width": 105,
+                            "height": 105
+                          }
+                        },
+                        "imageType": "png",
+                        "children": []
+                      }
+                    ]
                   }
                 ]
               }

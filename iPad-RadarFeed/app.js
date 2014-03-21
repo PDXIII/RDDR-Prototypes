@@ -14,6 +14,7 @@ var triggerOffset = 10;
 var globalAnimationTime = 100;
 var globalAnimationCurve = 'spring(400,10,500)';
 var globalDirection, globalDistance;
+var directionSet = false;
 
 var ColorLayer = new View({
   width: 235,
@@ -53,7 +54,7 @@ Attribut_right01.animate({
 	origin: '0% 50%'
 });
 
-Information01.animate({
+MoreInfo.animate({
 	properties:{
 		scale: 0,
 	},
@@ -61,189 +62,118 @@ Information01.animate({
 	origin: '50% 50%'
 });
 
-Skip01.animate({
+Skip.animate({
 	properties:{
 		scale: 0,
 	},
 	time:0,
 	origin: '50% 50%'
 });
-// Attribut_left01.html = 'komplex';
-// Attribut_right01.html = 'einfach';
-// Attribut_left01.addClass('attribute_left');
-// Attribut_right01.addClass('attribute_right');
 
-// ColorLayer.opacity = 0;
+// Result.animate({
+// 	properties: {
+// 		scale: 0,
+// 	},
+// 	time: 0,
+// 	origin: '50% 50%'
+// });
 
+
+var makeItInvisible = function ( subView, index){
+	subView.opacity = 0;
+}
+
+var makeItVisible = function ( subView, index){
+	utils.delay(250 * index, function(){
+		subView.scale = .1;
+		subView.animate({
+				properties: {
+					scale: 1,
+					opacity: 1
+				},
+				curve: globalAnimationCurve
+			});	
+	})
+};
+
+Result._subViews.forEach(makeItInvisible);
 
 Object01.addSubView(ColorLayer);
 ColorLayer.addClass('colorLayer');
 
 Object01.dragger = new ui.Draggable(Object01);
+// console.log(Object01.x + ' / ' + Object01.y);
 
 Object01.on(Events.DragMove, function () {
 	// limit to one axis
+		globalDirection = getDirection(Object01);
+		animateWords(Object01, globalDirection);
+});
 
-	var direction = getDirection(Object01);
+
+Object01.dragger.on(Events.DragEnd, function () {
+	if (globalDistance >= maxDistance - triggerOffset ){
+		dragObjDisappears(Object01);
+	}
+	else{
+		dragObjReset(Object01);
+	}
+});
+
+function animateWords(_dragObj, _direction){
+	var direction = _direction;
 	var distance;
 
 	if(direction[0] === 'x'){
-		Object01.y = 0;
+		_dragObj.y = 0;
+		distance = getXDistance(_dragObj);
+		if(direction[1] === 'left'){
+			_dragObj.superView._subViews[4]._subViews[1].scale = getScaleFactor(distance, .5);
+			if(distance >= maxDistance ){
+				_dragObj.x = -maxDistance;
+			}
+		}
+		else if(direction[1] ==='right'){
+
+			_dragObj.superView._subViews[4]._subViews[2].scale = getScaleFactor(distance, .5);
+			if(distance >= maxDistance ){
+				_dragObj.x = maxDistance;
+			}
+		}
 	}
 	else{
-		Object01.x = 0;
-	}
-
-	switch(direction[1]){
-		case 'left':
-			// Object01.y = 0;
-			distance = getXDistance(Object01);
-			// Attribut_left01.style ={
-				// fontSize: getFontsize(distance)
-			// }
-			Attribut_left01.scale = getScaleFactor(distance, .5);
+		_dragObj.x = 30;
+		distance = getYDistance(_dragObj);
+		if(direction[1] === 'up'){
+			_dragObj.superView._subViews[2].scale = getScaleFactor(distance, 0);
 			if(distance >= maxDistance ){
-				Object01.x = -maxDistance;
+				_dragObj.y = -maxDistance;
 			}
-			break;
-		case 'right':
-			// Object01.y = 0;
-			distance = getXDistance(Object01);
-			// Attribut_right01.style ={
-				// fontSize: getFontsize(distance)
-			// }
-			Attribut_right01.scale = getScaleFactor(distance, .5);
+		}
+		else if (direction[1] === 'down'){
+			_dragObj.superView._subViews[3].scale = getScaleFactor(distance, 0);
 			if(distance >= maxDistance ){
-				Object01.x = maxDistance;
+				_dragObj.y = maxDistance;
 			}
-			break;
-		case 'up':
-			// Object01.x = 0;
-			distance = getYDistance(Object01);
-			Information01.scale = getScaleFactor(distance, 0);
-			if(distance >= maxDistance ){
-				Object01.y = -maxDistance;
-				}
-			break;
-		case 'down':
-			// Object01.x = 0;
-			distance = getYDistance(Object01);
-			Skip01.scale = getScaleFactor(distance, 0);
-			if(distance >= maxDistance ){
-				Object01.y = maxDistance;
-				}
-			break;
+		}
 	}
-
+	// tint and untint the _dragObj
 	if (distance >= maxDistance - triggerOffset) {
-		ColorLayer.opacity = .5;
+		_dragObj._subViews[0].opacity = .5;
 	}
 	else{
-		ColorLayer.opacity = 0;
+		_dragObj._subViews[0].opacity = 0;
 	}
-	console.log(distance);
 	globalDistance = distance;
-	globalDirection  = direction;
-});
+}
 
-Object01.dragger.on(Events.DragEnd, function () {
-	// console.log('Drag End! ' + Object01.originalFrame.x + ' / ' + Object01.originalFrame.y);
-	console.log('Drag End! ' + globalDistance + ' / ' + globalDirection[1]);
-	if (globalDistance >= maxDistance - triggerOffset ){
-		// ColorLayer.opacity = 1;
-		switch (globalDirection[1]){
-			case 'left':
-				Object01.animate({
-					properties: {
-						x: -400
-					},
-					curve: globalAnimationCurve
-				});
-				break;
-			case 'right':
-				Object01.animate({
-					properties: {
-						x: 400
-					},
-					curve: globalAnimationCurve
-				});
-				break;
-			case 'up':
-				Object01.animate({
-					properties: {
-						y: -400
-					},
-					curve: globalAnimationCurve
-				});
-				break;
-			case 'down':
-				Object01.animate({
-					properties: {
-						y: 400
-					},
-					curve: globalAnimationCurve
-				});
-				break;
-		}
-	}
-	else{
-		Object01.animate({
-			properties:{
-				x: Object01.originalFrame.x,
-				y: Object01.originalFrame.y
-			},
-			curve: globalAnimationCurve
-		});
-
-		// Attribut_left01.style.fontSize = '24px';
-		// Attribut_right01.style.fontSize = '24px';
-
-		switch(globalDirection[1]){
-			case 'left':
-				Attribut_left01.animate({
-					properties:{
-						scale: .5
-					},
-					curve: globalAnimationCurve
-				});
-				break;
-			case 'right':
-				Attribut_right01.animate({
-					properties:{
-						scale: .5
-					},
-					curve: globalAnimationCurve
-				});
-				break;
-			case 'up':
-				Information01.animate({
-					properties:{
-						scale: 0
-					},
-					curve: globalAnimationCurve
-				});
-				break;
-			case 'down':
-				Skip01.animate({
-					properties:{
-						scale: 0
-					},
-					curve: globalAnimationCurve
-				});
-				break;
-		}
-	}
-	
-});
-
-function getDirection(_currObj) {
+function getDirection(_dragObj) {
 	var direction = [];
 	// horizontal
-	if( getXDistance(_currObj) > getYDistance(_currObj)){
+	if( getXDistance(_dragObj) > getYDistance(_dragObj)){
 		direction.push('x');
-		// _currObj.y = 0;
 		// left
-		if (_currObj.originalFrame.x > _currObj.frame.x) {
+		if (_dragObj.originalFrame.x > _dragObj.frame.x) {
 			direction.push('left');
 		}
 		// right
@@ -254,9 +184,8 @@ function getDirection(_currObj) {
 	// vertikal
 	else{
 		direction.push('y');
-		// _currObj.x = 0;
 		// up
-		if (_currObj.originalFrame.y > _currObj.frame.y) {
+		if (_dragObj.originalFrame.y > _dragObj.frame.y) {
 			direction.push('up');
 		}
 		// down
@@ -264,7 +193,9 @@ function getDirection(_currObj) {
 			direction.push('down');
 		}
 	}
-	console.log(direction);
+	directionSet = true;
+	// console.log(directionSet);
+	// console.log(direction);
 	return direction;
 };
 
@@ -278,6 +209,7 @@ function getYDistance(_dragObj){
 	return yDistance;
 }
 
+// deprecated
 var getFontsize = function(_distance){
 	var attrFontSize = _distance/3;
 	if(attrFontSize < 24){ attrFontSize = 24};
@@ -298,7 +230,7 @@ var getScaleFactor = function(_distance, _low2){
 }
 
 function map_range(value, low1, high1, low2, high2) {
-    return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
+  return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
 }
 
 function openMenu(_time, _curve){
@@ -322,3 +254,98 @@ function closeMenu(_time, _curve){
 	});
 	menuVisible = false;
 };
+
+function dragObjDisappears (_dragObj) {
+	switch (globalDirection[1]){
+		case 'left':
+			_dragObj.animate({
+				properties: {
+					x: -400
+				},
+				curve: globalAnimationCurve
+			});
+			// Result.scale = 1;
+			utils.delay(250, function (){
+				animateResult(_dragObj);
+			});
+			break;
+		case 'right':
+			_dragObj.animate({
+				properties: {
+					x: 400
+				},
+				curve: globalAnimationCurve
+			});
+							// Result.scale = 1;
+			utils.delay(250, function (){
+				animateResult(_dragObj);
+			});
+			break;
+		case 'up':
+			_dragObj.animate({
+				properties: {
+					y: -400
+				},
+				curve: globalAnimationCurve
+			});
+
+			// window.location.reload()
+			break;
+
+		case 'down':
+			_dragObj.animate({
+				properties: {
+					y: 400
+				},
+				curve: globalAnimationCurve
+			});
+			window.location.reload();
+			break;
+	}
+};
+
+function dragObjReset (_dragObj) {
+	_dragObj.animate({
+		properties:{
+			x: _dragObj.originalFrame.x,
+			y: _dragObj.originalFrame.y
+		},
+		curve: globalAnimationCurve
+	});
+
+	switch(globalDirection[1]){
+		case 'left':
+			animateToSmallType(_dragObj.superView._subViews[4]._subViews[1]);
+			break;
+		case 'right':
+			animateToSmallType(_dragObj.superView._subViews[4]._subViews[2]);
+			break;
+		case 'up':
+			animateToSmallType(_dragObj.superView._subViews[2]);
+			break;
+		case 'down':
+			animateToSmallType(_dragObj.superView._subViews[3]);
+			break;
+		}
+}
+
+function animateToSmallType (_currView){
+	// console.log(_currView.name);
+	_currView.animate({
+		properties:{
+			scale: .5
+		},
+		curve: globalAnimationCurve
+	});
+}
+
+function animateResult(_dragObj){
+	switch(globalDirection[1]){
+		case 'left':
+			_dragObj.superView._subViews[0]._subViews.forEach(makeItVisible);
+			break;
+		case 'right':
+			_dragObj.superView._subViews[0]._subViews.reverse().forEach(makeItVisible);
+			break;
+	};
+}

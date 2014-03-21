@@ -12,16 +12,150 @@
   font-weight: normal;
   font-style: normal;
 }
-.attribute_left,
-.attribute_right {
-  color: #ff00c1;
-  font-size: 24px;
-  letter-spacing: 1px;
-  font-family: 'PT_Sans-Narrow Regular';
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
-.attribute_left {
+.boldTypeBlue {
+  color: #172d4d;
+  font-family: 'PT_Sans-Narrow Bold';
+  text-shadow: -1px -1px -1px #001533;
+  letter-spacing: .04em;
+}
+.regularTypeBlue {
+  color: #172d4d;
+  font-family: 'PT_Sans-Narrow Regular';
+  text-shadow: -1px -1px -1px #001533;
+  letter-spacing: .04em;
+}
+.boldTypePink {
+  color: #ff00c1;
+  font-family: 'PT_Sans-Narrow Bold';
+  text-shadow: -1px -1px -1px #bd10e0;
+  letter-spacing: .04em;
+}
+.regularTypePink {
+  color: #ff00c1;
+  font-family: 'PT_Sans-Narrow Regular';
+  text-shadow: -1px -1px -1px #bd10e0;
+  letter-spacing: .04em;
+}
+.mainQuestion {
+  color: #172d4d;
+  font-family: 'PT_Sans-Narrow Regular';
+  text-shadow: -1px -1px -1px #001533;
+  letter-spacing: .04em;
+  text-align: center;
+  font-size: 48px;
+  line-height: 52px;
+}
+.attribute {
+  color: #ff00c1;
+  font-family: 'PT_Sans-Narrow Regular';
+  text-shadow: -1px -1px -1px #bd10e0;
+  letter-spacing: .04em;
+  font-size: 24px;
+}
+.answers {
+  color: #ff00c1;
+  font-family: 'PT_Sans-Narrow Regular';
+  text-shadow: -1px -1px -1px #bd10e0;
+  letter-spacing: .04em;
+  text-align: center;
+  font-size: 48px;
+  line-height: 52px;
+}
+.left,
+.keyView {
   text-align: right;
 }
-.colorLayer {
+.right,
+.valueView,
+.descriptionText {
+  text-align: left;
+}
+.center,
+.action,
+.infoGui,
+.resultlabel,
+.label,
+.infoHeadline {
+  text-align: center;
+}
+.label {
+  color: #172d4d;
+  font-family: 'PT_Sans-Narrow Bold';
+  text-shadow: -1px -1px -1px #001533;
+  letter-spacing: .04em;
+  font-size: 18px;
+}
+.resultlabel {
+  color: #172d4d;
+  font-family: 'PT_Sans-Narrow Bold';
+  text-shadow: -1px -1px -1px #001533;
+  letter-spacing: .04em;
+  font-size: 24px;
+}
+.result {
+  background-color: #fffaf2;
   border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 1px 2px 1px #172d4d;
+}
+.activeResult {
+  border: 2px solid #ff00c1;
+}
+.activeResult .colorLayer {
+  box-shadow: inset -2px -2px 0px 4px #fffaf2;
+}
+.dragObject {
+  overflow: hidden;
+  border-radius: 50%;
+  box-shadow: 0 1px 2px 1px #172d4d;
+}
+.colorLayer,
+.miniResult {
+  background-color: #ff00c1;
+  border-radius: 50%;
+}
+.action {
+  color: #172d4d;
+  font-family: 'PT_Sans-Narrow Regular';
+  text-shadow: -1px -1px -1px #001533;
+  letter-spacing: .04em;
+  font-size: 24px;
+}
+.infoImage {
+  border-radius: 50%;
+  box-shadow: 0 1px 2px 1px #172d4d;
+}
+.infoGui {
+  cursor: pointer;
+  border: 2px solid #172d4d;
+}
+.valueView,
+.descriptionText,
+.pair {
+  color: #172d4d;
+  font-family: 'PT_Sans-Narrow Regular';
+  text-shadow: -1px -1px -1px #001533;
+  letter-spacing: .04em;
+  font-size: 18px;
+}
+.keyView,
+.infoGui,
+.infoHeadline {
+  color: #172d4d;
+  font-family: 'PT_Sans-Narrow Bold';
+  text-shadow: -1px -1px -1px #001533;
+  letter-spacing: .04em;
+  font-size: 18px;
+}
+.scrollField {
+  box-shadow: inset 0px 1px 3px 0px #172d4d;
+}
+.infoView {
+  background-color: #fffaf2;
 }

@@ -16,6 +16,10 @@
 		<string>PTSans-Narrow</string>
 		<string>PTSans-Narrow</string>
 		<string>PTSans-Narrow</string>
+		<string>PTSans-NarrowBold</string>
+		<string>PTSans-NarrowBold</string>
+		<string>PTSans-NarrowBold</string>
+		<string>PTSans-Narrow</string>
 		<string>PTSans-Narrow</string>
 		<string>PTSans-Narrow</string>
 		<string>PTSans-NarrowBold</string>
@@ -25,7 +29,7 @@
 		<string>PTSans-NarrowBold</string>
 	</array>
 	<key>length</key>
-	<integer>535558</integer>
+	<integer>570131</integer>
 	<key>version</key>
 	<integer>18</integer>
 </dict>

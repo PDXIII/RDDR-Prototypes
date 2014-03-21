@@ -1,17 +1,166 @@
 @import 'fonts.less';
 
-.attribute_left,
-.attribute_right {
-	color: #ff00c1;
-	font-size: 24px;
-	letter-spacing: 1px;
+@lightBlue : #172d4d;
+@darkBlue : #001533;
+@lightPink : #ff00c1;
+@darkPink : #bd10e0;
+@creme : #fffaf2;
+
+*,
+*:before,
+*:after {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.textShadow(@color){
+	text-shadow: -1px -1px -1px @color;
+}
+
+.objectShadow(@color) {
+	// box-shadow: 0 -3px 3px lighten( @creme, 10%), 0 3px 3px @color ;
+	box-shadow: 0 1px 2px 1px @color ;
+}
+
+.boldTypeBlue{
+	color: @lightBlue;
+	font-family: 'PT_Sans-Narrow Bold';
+	.textShadow(@darkBlue);
+	letter-spacing: .04em;
+}
+.regularTypeBlue{
+	color: @lightBlue;
 	font-family: 'PT_Sans-Narrow Regular';
-};
+	.textShadow(@darkBlue);
+	letter-spacing: .04em;
+}
 
-.attribute_left {
+.boldTypePink{
+	color: @lightPink;
+	font-family: 'PT_Sans-Narrow Bold';
+	.textShadow(@darkPink);
+	letter-spacing: .04em;
+}
+.regularTypePink{
+	color: @lightPink;
+	font-family: 'PT_Sans-Narrow Regular';
+	.textShadow(@darkPink);
+	letter-spacing: .04em;
+}
+
+.mainQuestion {
+	.regularTypeBlue;
+	text-align: center;
+	font-size: 48px;
+	line-height: 52px;
+}
+
+.attribute {
+	.regularTypePink;
+	font-size: 24px;
+}
+
+.answers {
+	.regularTypePink;
+	text-align: center;
+	font-size: 48px;
+	line-height: 52px;
+}
+
+.left,
+.keyView {
 	text-align: right;
-};
+}
 
-.colorLayer {
+.right,
+.valueView,
+.descriptionText {
+	text-align: left;
+}
+
+.center,
+.action,
+.infoGui,
+.resultlabel,
+.label,
+.infoHeadline {
+	text-align: center;
+}
+
+.label{
+	.boldTypeBlue;
+	font-size: 18px;
+}
+
+.resultlabel{
+	.boldTypeBlue;
+	font-size: 24px;
+}
+
+.result {
+	background-color: @creme;
 	border-radius: 50%;
+	overflow: hidden;
+	.objectShadow(@lightBlue);
+}
+
+.activeResult {
+	border: 2px solid @lightPink;
+	.colorLayer{
+		box-shadow: inset -2px -2px 0px 4px @creme ;
+	}
+}
+
+.inactive {
+	// color: rgba(22, 45, 75, 0.5);
+}
+
+.dragObject {
+	overflow: hidden;
+	border-radius: 50%;
+	.objectShadow(@lightBlue);
+}
+
+.colorLayer,
+.miniResult {
+	background-color: @lightPink;
+	border-radius: 50%;
+}
+
+.action {
+	.regularTypeBlue;
+	font-size: 24px;
+}
+
+.infoImage {
+	border-radius: 50%;
+	.objectShadow(@lightBlue);
+}
+
+.infoGui {
+	cursor: pointer;
+	border: 2px solid @lightBlue;
+	// padding: 
+}
+
+.valueView,
+.descriptionText,
+.pair {
+	.regularTypeBlue;
+	font-size: 18px;
+}
+
+.keyView,
+.infoGui,
+.infoHeadline {
+	.boldTypeBlue;
+	font-size: 18px;
+}
+
+.scrollField {
+	box-shadow: inset 0px 1px 3px 0px @lightBlue;
+}
+
+.infoView {
+	background-color: @creme;
 }
