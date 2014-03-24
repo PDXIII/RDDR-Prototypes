@@ -21,7 +21,9 @@ var maxActionSize = 36;
 var startCurve = 'ease-in-out';
 var startTime = 150;
 var startSpring = 'spring(200,15,600)';
-var infoGuiSize = [110, 30, 10]; // width, height, margin
+var infoGuiSize = [110, 30, 10]; // width, height, margin of a button
+var questionIndex, pairIndex, objIndex;
+var designObject;
 
 var maxDistance = 155;
 var triggerOffset = 5;
@@ -138,6 +140,141 @@ function addInfoHeadline (_headline) {
 	// body...
 }
 
+function addToCluster () {
+	// console.log('add to cluster');
+
+	clusterLoop(0,-1,objIndex);
+}
+
+function clusterLoop (_questionIndex, _pairIndex, _objIndex) {
+	clearScene();
+	utils.delay(150, function (){
+		if ( _questionIndex < db.questions.length-1){
+			if (_pairIndex < db.questions[_questionIndex].pairs.length-1){
+				console.log(db.questions[_questionIndex].main + ' / ' + db.questions[_questionIndex].pairs[_pairIndex] + ' / ' + objIndex);
+				_pairIndex++;
+				makeClusterObj(_questionIndex, _pairIndex, _objIndex);
+			}
+			else{
+				_pairIndex = 0;
+				_questionIndex++;
+				console.log('Question: ' + _questionIndex)
+				makeClusterObj(_questionIndex, _pairIndex, _objIndex);
+			}
+		}
+		else{
+			// _questionIndex = 0; 
+			console.log('ende im gelände');
+		}
+	});
+}
+
+function animateObject (_currObj) {
+	utils.delay(125, function () {
+		// mainQuestion
+		_currObj._subViews[0].animate({
+			properties:{
+				y: 20
+			},
+			curve: startCurve,
+			time: startTime
+		});
+		utils.delay(100, function () {
+			// oder label
+			_currObj._subViews[1]._subViews[1].animate({
+				properties:{
+					opacity: .5,
+					scale: 1
+				},
+				curve: startCurve,
+				time: startTime
+			});
+			// left answer
+			utils.delay(75, function () {
+				_currObj._subViews[1]._subViews[0].animate({
+					properties:{
+						x: 0
+					},
+					curve: startCurve,
+					time: startTime
+				});
+				// right answer
+				utils.delay(75, function () {
+					_currObj._subViews[1]._subViews[2].animate({
+						properties:{
+							x: 222
+						},
+						curve: startCurve,
+						time: startTime
+					});
+					// dragObj
+					utils.delay(100, function () {
+						_currObj._subViews[4].animate({
+							properties: {
+								y: _currObj._subViews[4].originalFrame.y
+							},
+							curve: startSpring
+						});
+					});
+				});
+			});
+		});
+	});
+}
+
+function animateClusterObject (_currObj) {
+	utils.delay(125, function () {
+		// mainQuestion
+		_currObj._subViews[0].animate({
+			properties:{
+				y: 20
+			},
+			curve: startCurve,
+			time: startTime
+		});
+		utils.delay(100, function () {
+			// oder label
+			_currObj._subViews[1]._subViews[1].animate({
+				properties:{
+					opacity: .5,
+					scale: 1
+				},
+				curve: startCurve,
+				time: startTime
+			});
+			// left answer
+			utils.delay(75, function () {
+				_currObj._subViews[1]._subViews[0].animate({
+					properties:{
+						x: 0
+					},
+					curve: startCurve,
+					time: startTime
+				});
+				// right answer
+				utils.delay(75, function () {
+					_currObj._subViews[1]._subViews[2].animate({
+						properties:{
+							x: 222
+						},
+						curve: startCurve,
+						time: startTime
+					});
+					// dragObj
+					utils.delay(100, function () {
+						_currObj._subViews[2].animate({
+							properties: {
+								y: _currObj._subViews[2].originalFrame.y
+							},
+							curve: startSpring
+						});
+					});
+				});
+			});
+		});
+	});
+}
+
 function animateWords (_dragObj, _direction) {
 	var direction = _direction;
 	var distance;
@@ -145,15 +282,21 @@ function animateWords (_dragObj, _direction) {
 	if(direction[0] === 'x') {
 		_dragObj.y = _dragObj.originalFrame.y;
 		distance = getXDistance(_dragObj);
-
+			// tint and untint the _dragObj colorLayer
+		if (distance >= maxDistance - triggerOffset) {
+			_dragObj._subViews[1].opacity = .5;
+		}
+		 else{
+			_dragObj._subViews[1].opacity = 0;
+		}
 		if(direction[1] === 'left') {
-			_dragObj.superView._subViews[1]._subViews[0].style.fontSize = getFontSize(distance, minAttrSize, maxAttrSize);
+			_dragObj.superView._subViews[1]._subViews[0].style.fontSize = getFontSize(distance, 0, 155, minAttrSize, maxAttrSize);
 			if(distance >= maxDistance ) {
 				_dragObj.x = _dragObj.originalFrame.x - maxDistance;
 			}
 		}
 		else if(direction[1] ==='right') {
-			_dragObj.superView._subViews[1]._subViews[2].style.fontSize = getFontSize(distance, minAttrSize, maxAttrSize);
+			_dragObj.superView._subViews[1]._subViews[2].style.fontSize = getFontSize(distance, 0, 155, minAttrSize, maxAttrSize);
 			if(distance >= maxDistance ) {
 				_dragObj.x = _dragObj.originalFrame.x + maxDistance;
 			}
@@ -163,32 +306,47 @@ function animateWords (_dragObj, _direction) {
 		_dragObj.x = _dragObj.originalFrame.x;
 		distance = getYDistance(_dragObj);
 		if(direction[1] === 'up') {
-			_dragObj.superView._subViews[2]._subViews[1].style.fontSize = getFontSize(distance, minActionSize, maxActionSize);
+				// tint and untint the _dragObj colorLayer
+			if (distance >= 70 && distance <= 110 || distance >= maxDistance - triggerOffset) {
+				_dragObj._subViews[1].opacity = .5;
+			}
+			 else{
+				_dragObj._subViews[1].opacity = 0;
+			}
+			if( distance < 70){
+				_dragObj.superView._subViews[2]._subViews[1].style.fontSize = getFontSize(distance, 0, 70, minActionSize, maxActionSize);
+			}
+			else if( distance >= 110 ){
+				_dragObj.superView._subViews[2]._subViews[1].style.fontSize = getFontSize(distance, 110, 155, maxActionSize, minActionSize);
+				_dragObj.superView._subViews[2]._subViews[2].style.fontSize = getFontSize(distance, 110, 155, minActionSize, maxActionSize);
+			}
 			if(distance >= maxDistance ) {
 				_dragObj.y = _dragObj.originalFrame.y - maxDistance;
 			}
 		}
 		else if (direction[1] === 'down') {
-			_dragObj.superView._subViews[2]._subViews[0].style.fontSize = getFontSize(distance, minActionSize, maxActionSize);
+				// tint and untint the _dragObj colorLayer
+			if (distance >= maxDistance - triggerOffset) {
+				_dragObj._subViews[1].opacity = .5;
+			}
+			 else{
+				_dragObj._subViews[1].opacity = 0;
+			}
+			_dragObj.superView._subViews[2]._subViews[0].style.fontSize = getFontSize(distance, 0, 155, minActionSize, maxActionSize);
 			if(distance >= maxDistance ) {
 				_dragObj.y = _dragObj.originalFrame.y + maxDistance;
 			}
 		}
 	}
-	// tint and untint the _dragObj colorLayer
-	if (distance >= maxDistance - triggerOffset) {
-		_dragObj._subViews[1].opacity = .5;
-	}
-	 else{
-		_dragObj._subViews[1].opacity = 0;
-	}
+
 	// console.log(_dragObj.x + ' / ' + _dragObj.y + ' / ' + distance);
 	globalDistance = distance;
+	// console.log(globalDistance + ' / ' + globalDirection);
 }
 
 // is called by function dragObjReset()
 function animateToSmallType (_currView, _minFontSize) {
-	console.log(_currView);
+	// console.log(_currView);
 	$(_currView._element).animate({fontSize: _minFontSize}, 1200,'easeOutElastic');
 }
 
@@ -260,7 +418,7 @@ function cangeHeadline (){
 			time: startTime
 		});
 	});
-};
+}
 
 function cangeHeadlineBack (){
 	TopBar._subViews[2].animate({
@@ -280,7 +438,7 @@ function cangeHeadlineBack (){
 			time: startTime
 		});
 	});
-};
+}
 
 // is called by function dragObjDisappears()
 function changeMainQuestion (_mainQuestion) {
@@ -355,8 +513,7 @@ function dragObjDisappears (_dragObj) {
 				},
 				curve: globalAnimationCurve
 			});
-			showInfo();
-			dragObjReset(_dragObj);
+			addToCluster();
 			// window.location.reload()
 			break;
 
@@ -373,6 +530,39 @@ function dragObjDisappears (_dragObj) {
 			// window.location.reload();
 			break;
 	}
+}
+
+function clusterDragObjDisappears (_dragObj, _questionIndex, _pairIndex, _objIndex) {
+	switch (globalDirection[1]) {
+		case 'left':
+			_dragObj.animate({
+				properties: {
+					x: _dragObj.originalFrame.x - 700
+				},
+				curve: globalAnimationCurve
+			});
+			// Result.scale = 1;
+			changeMainQuestion(_dragObj.superView._subViews[0]);
+			bigAnswer(_dragObj.superView._subViews[1]);
+
+			break;
+		case 'right':
+			_dragObj.animate({
+				properties: {
+					x: _dragObj.originalFrame.x + 700
+				},
+				curve: globalAnimationCurve
+			});
+			// Result.scale = 1;
+			changeMainQuestion(_dragObj.superView._subViews[0]);
+			bigAnswer(_dragObj.superView._subViews[1]);
+
+			break;
+	}
+
+	utils.delay(1000, function(){
+		clusterLoop(_questionIndex, _pairIndex, _objIndex)
+	});
 }
 
 function dragObjReset (_dragObj) {
@@ -436,8 +626,10 @@ function getDirection (_dragObj) {
 	return direction;
 }
 
-var getFontSize = function (_distance, _minFontSize, _maxFontSize) {
-	var attrFontSize = map_range(_distance,0 , 155, _minFontSize, _maxFontSize);
+// is called by function animateWords()
+var getFontSize = function (_distance, _minDistance, _maxDistance, _minFontSize, _maxFontSize) {
+
+	var attrFontSize = map_range(_distance, _minDistance, _maxDistance, _minFontSize, _maxFontSize);
 	attrFontSize = attrFontSize + 'px';
 	// console.log(attrFontSize);
 	return attrFontSize;
@@ -610,7 +802,7 @@ function makeDragObj (_objIndex) {
 		x: 0,
 		y: 0,
 		style:{
-			opacity: 0.1
+			opacity: 0
 		}
 	});
 	colorLayer.addClass('colorLayer');
@@ -619,10 +811,6 @@ function makeDragObj (_objIndex) {
 	dragObject.originalFrame = dragObject.frame;
 	dragObject.originalFrame.y = 140;
 	dragObject.addClass('dragObject');
-
-	// dragObject.on('click', function () {
-	// 	console.log('click the object');
-	// });
 
 	dragObject.dragger = new ui.Draggable(dragObject);
 	
@@ -634,7 +822,11 @@ function makeDragObj (_objIndex) {
 	});
 	
 	dragObject.dragger.on(Events.DragEnd, function () {
-		if (globalDistance >= maxDistance - triggerOffset ) {
+		if (globalDirection[1] === 'up' && globalDistance >= 70 && globalDistance <= 110){
+			showInfo();
+			dragObjReset(dragObject);
+		}
+		else if (globalDistance >= maxDistance - triggerOffset ) {
 			dragObjDisappears(dragObject);
 		}
 		else{
@@ -700,7 +892,7 @@ function makeInfo (_objIndex) {
 			curve: startCurve,
 			time: startTime
 		});
-		$('.scrollField').scrollTop(0);
+		$('.scrollField').animate({scrollTop: 0 });
 	});
 	infoButton.addClass('infoButton infoGui');
 	infoButtonsRow.addSubView(infoButton);
@@ -725,7 +917,7 @@ function makeInfo (_objIndex) {
 			curve: startCurve,
 			time: startTime
 		});
-		$('.scrollField').scrollTop(195);
+		$('.scrollField').animate({scrollTop: 195 });
 	});
 	textButton.addClass('textButton infoGui');
 	infoButtonsRow.addSubView(textButton);
@@ -743,7 +935,7 @@ function makeInfo (_objIndex) {
 		dnaButton.opacity = 1;
 		infoButton.opacity = 0.5;
 		textButton.opacity = 0.5;
-		console.log('scroll');
+		// console.log('scroll');
 		currInfo.animate({
 			properties: {
 				y: -200
@@ -751,7 +943,7 @@ function makeInfo (_objIndex) {
 			curve: startCurve,
 			time: startTime
 		});
-		$('.scrollField').scrollTop(695);
+		$('.scrollField').animate({scrollTop: 695 });
 	});
 	dnaButton.addClass('dnaButton infoGui');
 	infoButtonsRow.addSubView(dnaButton);
@@ -797,7 +989,7 @@ function makeInfo (_objIndex) {
 		}else{
 			infoImage._subViews[0].opacity = 0;
 		}
-		console.log(getYDistance(infoImage));
+		// console.log(getYDistance(infoImage));
 	});
 	
 	infoImage.dragger.on(Events.DragEnd, function () {
@@ -877,6 +1069,7 @@ var makeItInvisible = function ( subView, index) {
 
 // called by function makeObj()
 function makeMainQuestion (_questionIndex) {
+	// console.log(_questionIndex);
 	var mainQuestion = new View({
 		width: 384,
 		height: 60,
@@ -902,10 +1095,120 @@ function makeMenuBtn () {
 	MenuButton.addClass('btn');
 }
 
+function makeDragClusterObj (_questionIndex, _pairIndex, _objIndex) {
+	// console.log('okay makeDragClusterObj');
+	var dragObject = new View({
+		// origin: '50% 50',
+		width: 236,
+		height: 236,
+		x: 74,
+		y: 512
+	});
+
+	var objImage = new ImageView({
+		width: 236,
+		height: 236,
+		x: 0,
+		y: 0,
+		image: '../assets/db/images/' + db.objects[_objIndex].images[0]
+	});
+	objImage.addClass('objImage');
+	dragObject.addSubView(objImage);
+
+	var colorLayer = new View({
+		width: 236,
+		height: 236,
+		x: 0,
+		y: 0,
+		style:{
+			opacity: 0
+		}
+	});
+	colorLayer.addClass('colorLayer');
+	dragObject.addSubView(colorLayer);
+
+	dragObject.originalFrame = dragObject.frame;
+	dragObject.originalFrame.y = 140;
+	dragObject.addClass('dragObject');
+
+	dragObject.dragger = new ui.Draggable(dragObject);
+	
+	dragObject.on(Events.DragMove, function () {
+		// limit to one axis
+		// console.log(dragObject.x + ' / ' + dragObject.y);
+		dragObject.y = dragObject.originalFrame.y;
+		globalDirection = getDirection(dragObject);
+
+		dragObject.y = dragObject.originalFrame.y;
+		distance = getXDistance(dragObject);
+			// tint and untint the dragObject colorLayer
+		if (distance >= maxDistance - triggerOffset) {
+			dragObject._subViews[1].opacity = .5;
+		}
+		 else{
+			dragObject._subViews[1].opacity = 0;
+		}
+		if(globalDirection[1] === 'left') {
+			dragObject.superView._subViews[1]._subViews[0].style.fontSize = getFontSize(distance, 0, 155, minAttrSize, maxAttrSize);
+			if(distance >= maxDistance ) {
+				dragObject.x = dragObject.originalFrame.x - maxDistance;
+			}
+		}
+		else if(globalDirection[1] ==='right') {
+			dragObject.superView._subViews[1]._subViews[2].style.fontSize = getFontSize(distance, 0, 155, minAttrSize, maxAttrSize);
+			if(distance >= maxDistance ) {
+				dragObject.x = dragObject.originalFrame.x + maxDistance;
+			}
+		}
+	});
+	
+	dragObject.dragger.on(Events.DragEnd, function () {
+		if (distance >= maxDistance - triggerOffset ) {
+			clusterDragObjDisappears(dragObject, _questionIndex, _pairIndex, _objIndex);
+		}
+		else{
+			dragObjReset(dragObject);
+		}
+	});
+
+	return dragObject;
+}
+
+function makeClusterObj (_questionIndex, _pairIndex, _objIndex){
+	// console.log(_questionIndex);
+	var objName = new View({
+		width: 236,
+		height: 236,
+		x: 74,
+		y: 80,
+		html: db.objects[_objIndex].name
+	});
+	objName.addClass('objName');
+	TopBar.addSubView(objName);
+
+	var currObj = new View({
+		width: 384,
+		height: 512,
+		x: 0,
+		y: 181
+	});
+	Scene.addSubView(currObj);
+	currObj.bringToFront();
+	// buid app
+	// console.log('okay makeClusterObj');
+	currObj.addSubView(makeMainQuestion(_questionIndex));
+	currObj.addSubView(makeAnswers(_questionIndex, _pairIndex));
+	currObj.addSubView(makeDragClusterObj(_questionIndex, _pairIndex, _objIndex));
+	// animate
+
+	animateClusterObject(currObj);
+	return currObj;
+}
+
 function makeObj () {
-	var questionIndex = getRandomInt(0,1);
-	var pairIndex = getRandomInt(0,4);
-	var objIndex = getRandomInt(0,20);
+	questionIndex = getRandomInt(0,1);
+	pairIndex = getRandomInt(0,4);
+	objIndex = getRandomInt(0,20);
 
 	var objName = new View({
 		width: 236,
@@ -935,56 +1238,7 @@ function makeObj () {
 	currObj.addSubView(makeInfo(objIndex));
 	// animate
 
-	utils.delay(250, function () {
-		// mainQuestion
-		currObj._subViews[0].animate({
-			properties:{
-				y: 20
-			},
-			curve: startCurve,
-			time: startTime
-		});
-		utils.delay(200, function () {
-			// oder label
-			currObj._subViews[1]._subViews[1].animate({
-				properties:{
-					opacity: .5,
-					scale: 1
-				},
-				curve: startCurve,
-				time: startTime
-			});
-			// left answer
-			utils.delay(100, function () {
-				currObj._subViews[1]._subViews[0].animate({
-					properties:{
-						x: 0
-					},
-					curve: startCurve,
-					time: startTime
-				});
-				// right answer
-				utils.delay(100, function () {
-					currObj._subViews[1]._subViews[2].animate({
-						properties:{
-							x: 222
-						},
-						curve: startCurve,
-						time: startTime
-					});
-					// dragObj
-					utils.delay(150, function () {
-						currObj._subViews[4].animate({
-							properties: {
-								y: currObj._subViews[4].originalFrame.y
-							},
-							curve: startSpring
-						});
-					});
-				});
-			});
-		});
-	});
+	animateObject(currObj);
 	return currObj;
 };
 
@@ -1061,7 +1315,7 @@ var makeResultVisible = function ( _subView, index) {
 				curve: globalAnimationCurve
 			});
 	})
-};
+}
 
 // is called by function animateResult()
 var makeResultInVisible = function ( _subView, index) {
@@ -1075,42 +1329,16 @@ var makeResultInVisible = function ( _subView, index) {
 				curve: globalAnimationCurve
 			});
 	})
-};
+}
 
 function map_range (value, low1, high1, low2, high2) {
   return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
 }
 
 function nextObj () {
-	Scene._subViews[1]._subViews[0].animate({
-			properties:{
-				y: -100,
-				opacity: 0
-			},
-			time: 200,
-			curve: 'ease-in-out'
-		});
-	Scene._subViews[1]._subViews[1].animate({
-			properties:{
-				y: 150,
-				opacity: 0
-			},
-			time: 200,
-			curve: 'ease-in-out'
-		});
-	Scene._subViews[1]._subViews[2].animate({
-			properties:{
-				scale: 0,
-				opacity: 0
-			},
-			time: 200,
-			curve: 'ease-in-out'
-		});
-	utils.delay(210, function () {
-		Scene._subViews.pop().destroy();
-		utils.delay(100, function () {
-			makeObj();
-		});
+	clearScene();
+	utils.delay(200, function () {
+		makeObj();
 	});
 }
 
@@ -1173,9 +1401,37 @@ function hideInfo(){
 	});
 }
 
-
+function clearScene () {
+	Scene._subViews[1]._subViews[0].animate({
+		properties:{
+			y: -100,
+			opacity: 0
+		},
+		time: 200,
+		curve: 'ease-in-out'
+	});
+	Scene._subViews[1]._subViews[1].animate({
+		properties:{
+			y: 150,
+			opacity: 0
+		},
+		time: 200,
+		curve: 'ease-in-out'
+	});
+	Scene._subViews[1]._subViews[2].animate({
+		properties:{
+			scale: 0,
+			opacity: 0
+		},
+		time: 200,
+		curve: 'ease-in-out'
+	});
+	utils.delay(100, function () {
+		Scene._subViews.pop().destroy();
+	});
+}
 
 $(document).ready(function () {
 	makeMenuBtn();
-	var designObject = makeObj();
+	designObject = makeObj();
 });
