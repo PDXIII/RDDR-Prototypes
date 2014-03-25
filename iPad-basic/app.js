@@ -10,6 +10,17 @@ for (var layerGroupName in PSD) {
 
 var menuVisible = false;
 
+MenuButton.on('click', function () {
+	var time = 250;
+	var curve = 'ease-in-out';
+	if(!menuVisible){
+		openMenu(time, curve);
+	}
+	else{
+		closeMenu(time, curve);
+	}
+});
+
 function openMenu(_time, _curve){
 
 	Scene.animate({

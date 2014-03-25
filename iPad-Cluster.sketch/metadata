@@ -16,10 +16,11 @@
 		<string>PTSans-Narrow</string>
 		<string>PTSans-Narrow</string>
 		<string>PTSans-Narrow</string>
+		<string>PTSans-CaptionBold</string>
 		<string>PTSans-NarrowBold</string>
 	</array>
 	<key>length</key>
-	<integer>9436204</integer>
+	<integer>346244</integer>
 	<key>version</key>
 	<integer>18</integer>
 </dict>

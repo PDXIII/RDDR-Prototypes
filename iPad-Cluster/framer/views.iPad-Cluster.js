@@ -6,7 +6,7 @@ window.FramerPS['iPad-Cluster'] = [
       "x": -22,
       "y": -22,
       "width": 1324,
-      "height": 765
+      "height": 764
     },
     "maskFrame": null,
     "children": [
@@ -15,8 +15,8 @@ window.FramerPS['iPad-Cluster'] = [
         "layerFrame": {
           "x": 444,
           "y": -1,
-          "width": 741,
-          "height": 727
+          "width": 418,
+          "height": 775
         },
         "maskFrame": {
           "x": 448,
@@ -29,8 +29,8 @@ window.FramerPS['iPad-Cluster'] = [
           "frame": {
             "x": 444,
             "y": -1,
-            "width": 741,
-            "height": 727
+            "width": 418,
+            "height": 775
           }
         },
         "imageType": "png",
@@ -57,24 +57,36 @@ window.FramerPS['iPad-Cluster'] = [
             "children": []
           },
           {
-            "name": "Scene",
+            "name": "Writing",
             "layerFrame": {
-              "x": 444,
-              "y": -1,
-              "width": 741,
-              "height": 727
+              "x": 446,
+              "y": 14,
+              "width": 387,
+              "height": 758
             },
             "maskFrame": null,
             "image": {
-              "path": "images/Scene.png",
+              "path": "images/Writing.png",
               "frame": {
-                "x": 444,
-                "y": -1,
-                "width": 741,
-                "height": 727
+                "x": 446,
+                "y": 14,
+                "width": 387,
+                "height": 758
               }
             },
             "imageType": "png",
+            "visible": false,
+            "children": []
+          },
+          {
+            "name": "Scene",
+            "layerFrame": {
+              "x": 444,
+              "y": 101,
+              "width": 418,
+              "height": 624
+            },
+            "maskFrame": null,
             "children": [
               {
                 "name": "TopBar",
@@ -134,275 +146,107 @@ window.FramerPS['iPad-Cluster'] = [
                 "name": "ObjectSpace",
                 "layerFrame": {
                   "x": 445,
-                  "y": 237,
+                  "y": 179,
                   "width": 389,
-                  "height": 466
+                  "height": 523
                 },
                 "maskFrame": null,
                 "image": {
                   "path": "images/ObjectSpace.png",
                   "frame": {
                     "x": 445,
-                    "y": 237,
+                    "y": 179,
                     "width": 389,
-                    "height": 466
+                    "height": 523
                   }
                 },
                 "imageType": "png",
                 "children": [
                   {
+                    "name": "SmallInfoButton",
+                    "layerFrame": {
+                      "x": 458,
+                      "y": 583,
+                      "width": 25,
+                      "height": 25
+                    },
+                    "maskFrame": null,
+                    "image": {
+                      "path": "images/SmallInfoButton.png",
+                      "frame": {
+                        "x": 458,
+                        "y": 583,
+                        "width": 25,
+                        "height": 25
+                      }
+                    },
+                    "imageType": "png",
+                    "children": []
+                  },
+                  {
                     "name": "PlusButton",
                     "layerFrame": {
-                      "x": 804,
-                      "y": 595,
-                      "width": 11,
-                      "height": 11
+                      "x": 797,
+                      "y": 583,
+                      "width": 25,
+                      "height": 25
                     },
                     "maskFrame": null,
                     "image": {
                       "path": "images/PlusButton.png",
                       "frame": {
-                        "x": 804,
-                        "y": 595,
-                        "width": 11,
-                        "height": 11
+                        "x": 797,
+                        "y": 583,
+                        "width": 25,
+                        "height": 25
                       }
                     },
                     "imageType": "png",
                     "children": []
                   },
                   {
-                    "name": "Object01_draggable",
+                    "name": "TargetBG",
                     "layerFrame": {
-                      "x": 566,
-                      "y": 350,
-                      "width": 58,
-                      "height": 58
+                      "x": 446,
+                      "y": 179,
+                      "width": 388,
+                      "height": 441
                     },
                     "maskFrame": null,
                     "image": {
-                      "path": "images/Object01_draggable.png",
+                      "path": "images/TargetBG.png",
                       "frame": {
-                        "x": 566,
-                        "y": 350,
-                        "width": 58,
-                        "height": 58
-                      }
-                    },
-                    "imageType": "png",
-                    "children": []
-                  },
-                  {
-                    "name": "Object02_draggable",
-                    "layerFrame": {
-                      "x": 683,
-                      "y": 384,
-                      "width": 58,
-                      "height": 58
-                    },
-                    "maskFrame": null,
-                    "image": {
-                      "path": "images/Object02_draggable.png",
-                      "frame": {
-                        "x": 683,
-                        "y": 384,
-                        "width": 58,
-                        "height": 58
-                      }
-                    },
-                    "imageType": "png",
-                    "children": []
-                  },
-                  {
-                    "name": "Object03_draggable",
-                    "layerFrame": {
-                      "x": 759,
-                      "y": 624,
-                      "width": 58,
-                      "height": 58
-                    },
-                    "maskFrame": null,
-                    "image": {
-                      "path": "images/Object03_draggable.png",
-                      "frame": {
-                        "x": 759,
-                        "y": 624,
-                        "width": 58,
-                        "height": 58
-                      }
-                    },
-                    "imageType": "png",
-                    "children": []
-                  },
-                  {
-                    "name": "Object04_draggable",
-                    "layerFrame": {
-                      "x": 563,
-                      "y": 263,
-                      "width": 58,
-                      "height": 58
-                    },
-                    "maskFrame": null,
-                    "image": {
-                      "path": "images/Object04_draggable.png",
-                      "frame": {
-                        "x": 563,
-                        "y": 263,
-                        "width": 58,
-                        "height": 58
-                      }
-                    },
-                    "imageType": "png",
-                    "children": []
-                  },
-                  {
-                    "name": "Object05_draggable",
-                    "layerFrame": {
-                      "x": 483,
-                      "y": 624,
-                      "width": 58,
-                      "height": 58
-                    },
-                    "maskFrame": null,
-                    "image": {
-                      "path": "images/Object05_draggable.png",
-                      "frame": {
-                        "x": 483,
-                        "y": 624,
-                        "width": 58,
-                        "height": 58
-                      }
-                    },
-                    "imageType": "png",
-                    "children": []
-                  },
-                  {
-                    "name": "Object06_draggable",
-                    "layerFrame": {
-                      "x": 648,
-                      "y": 624,
-                      "width": 58,
-                      "height": 58
-                    },
-                    "maskFrame": null,
-                    "image": {
-                      "path": "images/Object06_draggable.png",
-                      "frame": {
-                        "x": 648,
-                        "y": 624,
-                        "width": 58,
-                        "height": 58
-                      }
-                    },
-                    "imageType": "png",
-                    "children": []
-                  },
-                  {
-                    "name": "Object07_draggable",
-                    "layerFrame": {
-                      "x": 702,
-                      "y": 624,
-                      "width": 58,
-                      "height": 58
-                    },
-                    "maskFrame": null,
-                    "image": {
-                      "path": "images/Object07_draggable.png",
-                      "frame": {
-                        "x": 702,
-                        "y": 624,
-                        "width": 58,
-                        "height": 58
-                      }
-                    },
-                    "imageType": "png",
-                    "children": []
-                  },
-                  {
-                    "name": "Object08_draggable",
-                    "layerFrame": {
-                      "x": 537,
-                      "y": 624,
-                      "width": 58,
-                      "height": 58
-                    },
-                    "maskFrame": null,
-                    "image": {
-                      "path": "images/Object08_draggable.png",
-                      "frame": {
-                        "x": 537,
-                        "y": 624,
-                        "width": 58,
-                        "height": 58
-                      }
-                    },
-                    "imageType": "png",
-                    "children": []
-                  },
-                  {
-                    "name": "Object09_draggable",
-                    "layerFrame": {
-                      "x": 654,
-                      "y": 316,
-                      "width": 58,
-                      "height": 58
-                    },
-                    "maskFrame": null,
-                    "image": {
-                      "path": "images/Object09_draggable.png",
-                      "frame": {
-                        "x": 654,
-                        "y": 316,
-                        "width": 58,
-                        "height": 58
-                      }
-                    },
-                    "imageType": "png",
-                    "children": []
-                  },
-                  {
-                    "name": "Object10_draggable",
-                    "layerFrame": {
-                      "x": 592,
-                      "y": 624,
-                      "width": 58,
-                      "height": 58
-                    },
-                    "maskFrame": null,
-                    "image": {
-                      "path": "images/Object10_draggable.png",
-                      "frame": {
-                        "x": 592,
-                        "y": 624,
-                        "width": 58,
-                        "height": 58
-                      }
-                    },
-                    "imageType": "png",
-                    "children": []
-                  },
-                  {
-                    "name": "Target",
-                    "layerFrame": {
-                      "x": 465,
-                      "y": 237,
-                      "width": 350,
-                      "height": 350
-                    },
-                    "maskFrame": null,
-                    "image": {
-                      "path": "images/Target.png",
-                      "frame": {
-                        "x": 465,
-                        "y": 237,
-                        "width": 350,
-                        "height": 350
+                        "x": 446,
+                        "y": 179,
+                        "width": 388,
+                        "height": 441
                       }
                     },
                     "imageType": "png",
                     "children": []
                   }
                 ]
+              },
+              {
+                "name": "SceneBG",
+                "layerFrame": {
+                  "x": 447,
+                  "y": 103,
+                  "width": 413,
+                  "height": 620
+                },
+                "maskFrame": null,
+                "image": {
+                  "path": "images/SceneBG.png",
+                  "frame": {
+                    "x": 447,
+                    "y": 103,
+                    "width": 413,
+                    "height": 620
+                  }
+                },
+                "imageType": "png",
+                "children": []
               }
             ]
           },
@@ -411,7 +255,7 @@ window.FramerPS['iPad-Cluster'] = [
             "layerFrame": {
               "x": 447,
               "y": 1,
-              "width": 736,
+              "width": 372,
               "height": 722
             },
             "maskFrame": null,
@@ -420,7 +264,7 @@ window.FramerPS['iPad-Cluster'] = [
               "frame": {
                 "x": 447,
                 "y": 1,
-                "width": 736,
+                "width": 372,
                 "height": 722
               }
             },

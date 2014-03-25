@@ -123,6 +123,7 @@
 }
 .dragObject {
   overflow: hidden;
+  cursor: pointer;
   border-radius: 50%;
   box-shadow: 0 1px 2px 1px #172d4d;
 }
@@ -179,4 +180,7 @@
   letter-spacing: .04em;
   font-size: 17px;
   line-heigth: 17px;
+}
+.btn {
+  cursor: pointer;
 }

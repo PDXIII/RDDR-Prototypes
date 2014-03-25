@@ -505,8 +505,8 @@ var db = {
 			]
 		},
 		{
-			"id": "obj12,",
-			"name":"Object12,",
+			"id": "obj12",
+			"name":"Object12",
 			"designer": "Dieter Rams",
 			"year": 2014,
 			"country": "Deutschland",
@@ -860,6 +860,48 @@ var db = {
 						[ 51, 35, 24 ],
 						[ 2, 85, 15 ],
 						[ 42, 100, 92 ]
+					]
+				}
+			]
+		}
+	],
+	"clusters":[
+		{
+			"id": "clu01",
+			"name":"SmallCabins",
+			"designer": "Dieter Rams",
+			"year": 2014,
+			"country": "Deutschland",
+			"genus": "Architektur",
+			"format": "Einzelstück",
+			"images": [
+				"SmallCabin-13.png"
+			],
+			"description": "Bevor Sie diesen Text lesen, sollten Sie unbedingt zwei Dinge tun. Erstens sollten Sie der Agentur noch einmal ausdrücklich versichern, daß Sie diese Anzeige für das Beste halten, was Sie je gesehen haben, und noch heute einen langfristigen Vertrag abschließen möchten. Zweitens sollten Sie davon ausgehen, daß diese Anzeige über Nacht entstanden ist und deshalb noch stark verbessert werden kann. Am Layout wird noch ein bißchen gedreht, das Logo wird noch einen Tick größer und der Text, der hier stehen soll, wird kein Tippfehler haben.",
+			"colors":[
+				"#fff",
+				"#eee",
+				"#000"
+			],
+			"dna":[
+				{
+					"kind": "physical",
+					"pairs":[ 
+						[ 5, 97, 76 ],
+						[ 86, 68, 71 ],
+						[ 23, 15, 94 ],
+						[ 74, 36, 83 ],
+						[ 84, 11, 13 ]
+					]
+				},
+				{
+					"kind": "meta",
+					"pairs":[
+						[ 87, 17, 81 ],
+						[ 9, 2, 7 ],
+						[ 6, 44, 36 ],
+						[ 62, 23, 72 ],
+						[ 62, 14, 67 ]
 					]
 				}
 			]
