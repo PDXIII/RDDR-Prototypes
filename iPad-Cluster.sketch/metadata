@@ -17,10 +17,27 @@
 		<string>PTSans-Narrow</string>
 		<string>PTSans-Narrow</string>
 		<string>PTSans-CaptionBold</string>
+		<string>PTSans-Narrow</string>
 		<string>PTSans-NarrowBold</string>
+		<string>PTSans-Narrow</string>
+		<string>PTSans-NarrowBold</string>
+		<string>PTSans-Narrow</string>
+		<string>PTSans-NarrowBold</string>
+		<string>PTSans-Narrow</string>
+		<string>PTSans-NarrowBold</string>
+		<string>PTSans-Narrow</string>
+		<string>PTSans-NarrowBold</string>
+		<string>PTSans-Narrow</string>
+		<string>PTSans-NarrowBold</string>
+		<string>PTSans-NarrowBold</string>
+		<string>PTSans-Narrow</string>
+		<string>PTSans-NarrowBold</string>
+		<string>PTSans-Narrow</string>
+		<string>PTSans-NarrowBold</string>
+		<string>HelveticaNeue-Light</string>
 	</array>
 	<key>length</key>
-	<integer>346244</integer>
+	<integer>420194</integer>
 	<key>version</key>
 	<integer>18</integer>
 </dict>

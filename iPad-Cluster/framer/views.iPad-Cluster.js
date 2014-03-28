@@ -13,10 +13,10 @@ window.FramerPS['iPad-Cluster'] = [
       {
         "name": "Application",
         "layerFrame": {
-          "x": 444,
-          "y": -1,
-          "width": 418,
-          "height": 775
+          "x": 443,
+          "y": 100,
+          "width": 423,
+          "height": 1912
         },
         "maskFrame": {
           "x": 448,
@@ -27,10 +27,10 @@ window.FramerPS['iPad-Cluster'] = [
         "image": {
           "path": "images/Application.png",
           "frame": {
-            "x": 444,
-            "y": -1,
-            "width": 418,
-            "height": 775
+            "x": 443,
+            "y": 100,
+            "width": 423,
+            "height": 1912
           }
         },
         "imageType": "png",
@@ -60,40 +60,61 @@ window.FramerPS['iPad-Cluster'] = [
             "name": "Writing",
             "layerFrame": {
               "x": 446,
-              "y": 14,
-              "width": 387,
-              "height": 758
+              "y": 614,
+              "width": 393,
+              "height": 691
             },
             "maskFrame": null,
             "image": {
               "path": "images/Writing.png",
               "frame": {
                 "x": 446,
-                "y": 14,
-                "width": 387,
-                "height": 758
+                "y": 614,
+                "width": 393,
+                "height": 691
               }
             },
             "imageType": "png",
-            "visible": false,
-            "children": []
+            "children": [
+              {
+                "name": "FertigBtn",
+                "layerFrame": {
+                  "x": 796,
+                  "y": 624,
+                  "width": 43,
+                  "height": 12
+                },
+                "maskFrame": null,
+                "image": {
+                  "path": "images/FertigBtn.png",
+                  "frame": {
+                    "x": 796,
+                    "y": 624,
+                    "width": 43,
+                    "height": 12
+                  }
+                },
+                "imageType": "png",
+                "children": []
+              }
+            ]
           },
           {
             "name": "Scene",
             "layerFrame": {
-              "x": 444,
+              "x": 443,
               "y": 101,
-              "width": 418,
-              "height": 624
+              "width": 423,
+              "height": 1911
             },
             "maskFrame": null,
             "children": [
               {
                 "name": "TopBar",
                 "layerFrame": {
-                  "x": 446,
-                  "y": 104,
-                  "width": 386,
+                  "x": 445,
+                  "y": 103,
+                  "width": 391,
                   "height": 78
                 },
                 "maskFrame": null,
@@ -101,8 +122,8 @@ window.FramerPS['iPad-Cluster'] = [
                   {
                     "name": "MenuButton",
                     "layerFrame": {
-                      "x": 460,
-                      "y": 134,
+                      "x": 461,
+                      "y": 133,
                       "width": 30,
                       "height": 48
                     },
@@ -110,8 +131,8 @@ window.FramerPS['iPad-Cluster'] = [
                     "image": {
                       "path": "images/MenuButton.png",
                       "frame": {
-                        "x": 460,
-                        "y": 134,
+                        "x": 461,
+                        "y": 133,
                         "width": 30,
                         "height": 48
                       }
@@ -122,19 +143,104 @@ window.FramerPS['iPad-Cluster'] = [
                   {
                     "name": "H1",
                     "layerFrame": {
-                      "x": 446,
-                      "y": 104,
-                      "width": 386,
+                      "x": 445,
+                      "y": 103,
+                      "width": 391,
                       "height": 78
                     },
                     "maskFrame": null,
                     "image": {
                       "path": "images/H1.png",
                       "frame": {
-                        "x": 446,
-                        "y": 104,
-                        "width": 386,
+                        "x": 445,
+                        "y": 103,
+                        "width": 391,
                         "height": 78
+                      }
+                    },
+                    "imageType": "png",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "name": "ClusterInfo",
+                "layerFrame": {
+                  "x": 452,
+                  "y": 624,
+                  "width": 384,
+                  "height": 1386
+                },
+                "maskFrame": null,
+                "image": {
+                  "path": "images/ClusterInfo.png",
+                  "frame": {
+                    "x": 452,
+                    "y": 624,
+                    "width": 384,
+                    "height": 1386
+                  }
+                },
+                "imageType": "png",
+                "children": [
+                  {
+                    "name": "Kritik",
+                    "layerFrame": {
+                      "x": 464,
+                      "y": 1265,
+                      "width": 361,
+                      "height": 174
+                    },
+                    "maskFrame": null,
+                    "image": {
+                      "path": "images/Kritik.png",
+                      "frame": {
+                        "x": 464,
+                        "y": 1265,
+                        "width": 361,
+                        "height": 174
+                      }
+                    },
+                    "imageType": "png",
+                    "children": []
+                  },
+                  {
+                    "name": "Konzept",
+                    "layerFrame": {
+                      "x": 464,
+                      "y": 1067,
+                      "width": 361,
+                      "height": 174
+                    },
+                    "maskFrame": null,
+                    "image": {
+                      "path": "images/Konzept.png",
+                      "frame": {
+                        "x": 464,
+                        "y": 1067,
+                        "width": 361,
+                        "height": 174
+                      }
+                    },
+                    "imageType": "png",
+                    "children": []
+                  },
+                  {
+                    "name": "Merkmal",
+                    "layerFrame": {
+                      "x": 464,
+                      "y": 942,
+                      "width": 361,
+                      "height": 102
+                    },
+                    "maskFrame": null,
+                    "image": {
+                      "path": "images/Merkmal.png",
+                      "frame": {
+                        "x": 464,
+                        "y": 942,
+                        "width": 361,
+                        "height": 102
                       }
                     },
                     "imageType": "png",
@@ -145,18 +251,18 @@ window.FramerPS['iPad-Cluster'] = [
               {
                 "name": "ObjectSpace",
                 "layerFrame": {
-                  "x": 445,
+                  "x": 444,
                   "y": 179,
-                  "width": 389,
+                  "width": 394,
                   "height": 523
                 },
                 "maskFrame": null,
                 "image": {
                   "path": "images/ObjectSpace.png",
                   "frame": {
-                    "x": 445,
+                    "x": 444,
                     "y": 179,
-                    "width": 389,
+                    "width": 394,
                     "height": 523
                   }
                 },
@@ -165,7 +271,7 @@ window.FramerPS['iPad-Cluster'] = [
                   {
                     "name": "SmallInfoButton",
                     "layerFrame": {
-                      "x": 458,
+                      "x": 462,
                       "y": 583,
                       "width": 25,
                       "height": 25
@@ -174,7 +280,7 @@ window.FramerPS['iPad-Cluster'] = [
                     "image": {
                       "path": "images/SmallInfoButton.png",
                       "frame": {
-                        "x": 458,
+                        "x": 462,
                         "y": 583,
                         "width": 25,
                         "height": 25
@@ -186,7 +292,7 @@ window.FramerPS['iPad-Cluster'] = [
                   {
                     "name": "PlusButton",
                     "layerFrame": {
-                      "x": 797,
+                      "x": 801,
                       "y": 583,
                       "width": 25,
                       "height": 25
@@ -195,7 +301,7 @@ window.FramerPS['iPad-Cluster'] = [
                     "image": {
                       "path": "images/PlusButton.png",
                       "frame": {
-                        "x": 797,
+                        "x": 801,
                         "y": 583,
                         "width": 25,
                         "height": 25
@@ -207,7 +313,7 @@ window.FramerPS['iPad-Cluster'] = [
                   {
                     "name": "TargetBG",
                     "layerFrame": {
-                      "x": 446,
+                      "x": 450,
                       "y": 179,
                       "width": 388,
                       "height": 441
@@ -216,7 +322,7 @@ window.FramerPS['iPad-Cluster'] = [
                     "image": {
                       "path": "images/TargetBG.png",
                       "frame": {
-                        "x": 446,
+                        "x": 450,
                         "y": 179,
                         "width": 388,
                         "height": 441
@@ -232,7 +338,7 @@ window.FramerPS['iPad-Cluster'] = [
                 "layerFrame": {
                   "x": 447,
                   "y": 103,
-                  "width": 413,
+                  "width": 417,
                   "height": 620
                 },
                 "maskFrame": null,
@@ -241,7 +347,7 @@ window.FramerPS['iPad-Cluster'] = [
                   "frame": {
                     "x": 447,
                     "y": 103,
-                    "width": 413,
+                    "width": 417,
                     "height": 620
                   }
                 },
@@ -254,18 +360,18 @@ window.FramerPS['iPad-Cluster'] = [
             "name": "MainMenu",
             "layerFrame": {
               "x": 447,
-              "y": 1,
+              "y": 102,
               "width": 372,
-              "height": 722
+              "height": 621
             },
             "maskFrame": null,
             "image": {
               "path": "images/MainMenu.png",
               "frame": {
                 "x": 447,
-                "y": 1,
+                "y": 102,
                 "width": 372,
-                "height": 722
+                "height": 621
               }
             },
             "imageType": "png",

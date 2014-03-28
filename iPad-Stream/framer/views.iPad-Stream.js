@@ -13,9 +13,9 @@ window.FramerPS['iPad-Stream'] = [
       {
         "name": "Application",
         "layerFrame": {
-          "x": 446,
+          "x": 447,
           "y": 1,
-          "width": 737,
+          "width": 403,
           "height": 722
         },
         "maskFrame": {
@@ -27,9 +27,9 @@ window.FramerPS['iPad-Stream'] = [
         "image": {
           "path": "images/Application.png",
           "frame": {
-            "x": 446,
+            "x": 447,
             "y": 1,
-            "width": 737,
+            "width": 403,
             "height": 722
           }
         },
@@ -59,18 +59,18 @@ window.FramerPS['iPad-Stream'] = [
           {
             "name": "Scene",
             "layerFrame": {
-              "x": 446,
+              "x": 447,
               "y": 1,
-              "width": 737,
+              "width": 403,
               "height": 722
             },
             "maskFrame": null,
             "image": {
               "path": "images/Scene.png",
               "frame": {
-                "x": 446,
+                "x": 447,
                 "y": 1,
-                "width": 737,
+                "width": 403,
                 "height": 722
               }
             },
@@ -79,28 +79,18 @@ window.FramerPS['iPad-Stream'] = [
               {
                 "name": "TopBar",
                 "layerFrame": {
-                  "x": 446,
+                  "x": 447,
                   "y": 103,
-                  "width": 386,
-                  "height": 79
+                  "width": 388,
+                  "height": 78
                 },
                 "maskFrame": null,
-                "image": {
-                  "path": "images/TopBar.png",
-                  "frame": {
-                    "x": 446,
-                    "y": 103,
-                    "width": 386,
-                    "height": 79
-                  }
-                },
-                "imageType": "png",
                 "children": [
                   {
                     "name": "MenuButton",
                     "layerFrame": {
-                      "x": 460,
-                      "y": 134,
+                      "x": 461,
+                      "y": 133,
                       "width": 30,
                       "height": 48
                     },
@@ -108,8 +98,8 @@ window.FramerPS['iPad-Stream'] = [
                     "image": {
                       "path": "images/MenuButton.png",
                       "frame": {
-                        "x": 460,
-                        "y": 134,
+                        "x": 461,
+                        "y": 133,
                         "width": 30,
                         "height": 48
                       }
@@ -120,23 +110,56 @@ window.FramerPS['iPad-Stream'] = [
                   {
                     "name": "H1",
                     "layerFrame": {
-                      "x": 491,
-                      "y": 160,
-                      "width": 298,
-                      "height": 18
+                      "x": 447,
+                      "y": 103,
+                      "width": 388,
+                      "height": 78
                     },
                     "maskFrame": null,
-                    "image": {
-                      "path": "images/H1.png",
-                      "frame": {
-                        "x": 491,
-                        "y": 160,
-                        "width": 298,
-                        "height": 18
+                    "children": [
+                      {
+                        "name": "Design_Radar",
+                        "layerFrame": {
+                          "x": 494,
+                          "y": 160,
+                          "width": 298,
+                          "height": 18
+                        },
+                        "maskFrame": null,
+                        "image": {
+                          "path": "images/Design_Radar.png",
+                          "frame": {
+                            "x": 494,
+                            "y": 160,
+                            "width": 298,
+                            "height": 18
+                          }
+                        },
+                        "imageType": "png",
+                        "children": []
+                      },
+                      {
+                        "name": "Rectangle_1",
+                        "layerFrame": {
+                          "x": 447,
+                          "y": 103,
+                          "width": 388,
+                          "height": 78
+                        },
+                        "maskFrame": null,
+                        "image": {
+                          "path": "images/Rectangle_1.png",
+                          "frame": {
+                            "x": 447,
+                            "y": 103,
+                            "width": 388,
+                            "height": 78
+                          }
+                        },
+                        "imageType": "png",
+                        "children": []
                       }
-                    },
-                    "imageType": "png",
-                    "children": []
+                    ]
                   }
                 ]
               }
@@ -147,7 +170,7 @@ window.FramerPS['iPad-Stream'] = [
             "layerFrame": {
               "x": 447,
               "y": 1,
-              "width": 736,
+              "width": 403,
               "height": 722
             },
             "maskFrame": null,
@@ -156,7 +179,7 @@ window.FramerPS['iPad-Stream'] = [
               "frame": {
                 "x": 447,
                 "y": 1,
-                "width": 736,
+                "width": 403,
                 "height": 722
               }
             },

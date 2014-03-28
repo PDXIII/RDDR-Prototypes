@@ -869,9 +869,9 @@ var db = {
 		{
 			"id": "clu01",
 			"name":"SmallCabins",
-			"designer": "Dieter Rams",
-			"year": 2014,
-			"country": "Deutschland",
+			"designer": "Dieter Rams, Yäkki Johanson",
+			"year": "1998 – 2014",
+			"country": "Deutschland, Schweden",
 			"genus": "Architektur",
 			"format": "Einzelstück",
 			"images": [
@@ -905,6 +905,50 @@ var db = {
 					]
 				}
 			]
+		}
+	],
+	"SmallClusterIcons": [
+		{
+			"name": "New Cluster",
+			"x": 11,
+			"y": 0,
+			"image": "ClusterImage0.jpg"
+		},
+		{
+			"name": "New Cluster",
+			"x": 104,
+			"y": 0,
+			"image": "ClusterImage1.jpg"
+		},
+		{
+			"name": "New Cluster",
+			"x": 197,
+			"y": 0,
+			"image": "ClusterImage2.jpg"
+		},
+		{
+			"name": "New Cluster",
+			"x": 290,
+			"y": 0,
+			"image": "ClusterImage3.jpg"
+		},
+		{
+			"name": "New Cluster",
+			"x": 11,
+			"y": 92,
+			"image": "ClusterImage4.jpg"
+		},
+		{
+			"name": "New Cluster",
+			"x": 104,
+			"y": 92,
+			"image": "ClusterImage5.jpg"
+		},
+		{
+			"name": "New Cluster",
+			"x": 197,
+			"y": 92,
+			"image": "ClusterImage6.jpg"
 		}
 	]
 };

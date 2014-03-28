@@ -10,16 +10,16 @@
 	<string>4570185e2c9ded14ebc287c802202c126573b527</string>
 	<key>fonts</key>
 	<array>
-		<string>PTSans-Narrow</string>
-		<string>PTSans-Narrow</string>
-		<string>PTSans-Narrow</string>
-		<string>PTSans-Narrow</string>
-		<string>PTSans-Narrow</string>
-		<string>PTSans-Narrow</string>
 		<string>PTSans-NarrowBold</string>
+		<string>PTSans-Narrow</string>
+		<string>PTSans-Narrow</string>
+		<string>PTSans-Narrow</string>
+		<string>PTSans-Narrow</string>
+		<string>PTSans-Narrow</string>
+		<string>PTSans-Narrow</string>
 	</array>
 	<key>length</key>
-	<integer>97536</integer>
+	<integer>2839165</integer>
 	<key>version</key>
 	<integer>18</integer>
 </dict>

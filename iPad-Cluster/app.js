@@ -4,7 +4,7 @@ Framer.config.animationPrecision = 30;
 for (var layerGroupName in PSD) {
 	window[layerGroupName] = PSD[layerGroupName];
 	PSD[layerGroupName].originalFrame = window[layerGroupName].frame;
-};
+}
 
 // variables
 var menuVisible = false;
@@ -35,7 +35,7 @@ function makeDragObjects (_object){
 		currDragObj.addSubView(colorLayer);
 
 		currDragObj.dragger = new ui.Draggable(currDragObj);
-		currDragObj.on(Events.DragStart, function (){
+		currDragObj.on(Events.DragStart, function(){
 			currDragObj.bringToFront();
 			// event.stopPropagation();
 			currDragObj.scale = 0.7;
@@ -47,7 +47,7 @@ function makeDragObjects (_object){
 				curve: 'spring(100, 10, 100)'
 			});
 		});
-		currDragObj.on(Events.DragMove, function (){
+		currDragObj.on(Events.DragMove, function(){
 			if(currDragObj.x < -25
 				|| currDragObj.x > 360
 				|| currDragObj.y < -25
@@ -62,7 +62,7 @@ function makeDragObjects (_object){
 			}
 			console.log(currDragObj.x + ' / ' + currDragObj.y);
 		});
-		currDragObj.on(Events.DragEnd, function (){
+		currDragObj.on(Events.DragEnd, function(){
 			if(currDragObj.x < -25
 				|| currDragObj.x > 360
 				|| currDragObj.y < -25
@@ -150,17 +150,10 @@ function openClusterInfo(_time, _curve){
 		},
 		curve: 'spring(200,10,10)'
 	});
-	stackVisible = true;
+	clusterInfoVisible = true;
 }
 
 function closeClusterInfo(_time, _curve){
-	// PlusButton.animate({
-	// 	properties:{
-	// 		rotation: 0
-	// 	},
-	// 	time: _time,
-	// 	curve: _curve
-	// });
 	Scene._subViews[3].animate({
 		properties: {
 			y: 722
@@ -168,7 +161,7 @@ function closeClusterInfo(_time, _curve){
 		time: _time,
 		curve: _curve
 	});
-	stackVisible = false;
+	clusterInfoVisible = false;
 }
 
 function openMenu (_time, _curve) {
@@ -193,8 +186,47 @@ function closeMenu (_time, _curve) {
 	menuVisible = false;
 }
 
-function makePlusBtn () {
-	PlusButton.on('click', function () {
+function showKeyBoard() {
+	Writing.animate({
+		properties: {
+			y: 355
+		},
+		curve: 'ease-in-out',
+		time: 100
+	});
+}
+
+function hideKeyBoard() {
+	Writing.animate({
+		properties: {
+			y: Writing.originalFrame.y
+		},
+		curve: 'ease-in-out',
+		time: 100
+	});
+}
+
+function makeEditButtons (argument) {
+	Merkmal.on('click', function(){
+		showKeyBoard();
+		$('.scrollField').animate({scrollTop: 300 });
+	});
+	Konzept.on('click', function(){
+		showKeyBoard();
+		$('.scrollField').animate({scrollTop: 433 });
+	});
+	Kritik.on('click', function(){
+		showKeyBoard();
+		$('.scrollField').animate({scrollTop: 620 });
+	});
+
+	FertigBtn.on('click', function(){
+		hideKeyBoard();
+	})
+}
+
+function makePlusBtn() {
+	PlusButton.on('click', function() {
 
 		if(!stackVisible){
 			openStack(time, curve);
@@ -206,8 +238,8 @@ function makePlusBtn () {
 	PlusButton.addClass('btn');
 }
 
-function makeSmallInfoBtn () {
-	SmallInfoButton.on('click', function () {
+function makeSmallInfoBtn() {
+	SmallInfoButton.on('click', function() {
 		var time = 250;
 		var curve = 'ease-in-out';
 		if(!clusterInfoVisible){
@@ -220,8 +252,8 @@ function makeSmallInfoBtn () {
 	SmallInfoButton.addClass('btn');
 }
 
-function makeMenuBtn () {
-	MenuButton.on('click', function () {
+function makeMenuBtn() {
+	MenuButton.on('click', function() {
 		var time = 250;
 		var curve = 'ease-in-out';
 		if(!menuVisible) {
@@ -245,6 +277,7 @@ function makeClusterInfo (_objIndex) {
 		x: 0,
 		y: 722
 	});
+	clusterFrame.addClass('clusterFrame');
 
 	var currCluster = new View({
 		width: 384,
@@ -280,7 +313,7 @@ function makeClusterInfo (_objIndex) {
 		html: 'Info'
 	});
 
-	infoButton.on('click',function () {
+	infoButton.on('click',function() {
 		infoButton.opacity = 1;
 		textButton.opacity = 0.5;
 		dnaButton.opacity = 0.5;
@@ -305,7 +338,7 @@ function makeClusterInfo (_objIndex) {
 		opacity: 0.5
 	});
 
-	textButton.on('click',function () {
+	textButton.on('click',function() {
 		textButton.opacity = 1;
 		infoButton.opacity = 0.5;
 		dnaButton.opacity = 0.5;
@@ -316,7 +349,7 @@ function makeClusterInfo (_objIndex) {
 			curve: curve,
 			time: time
 		});
-		$('.scrollField').animate({scrollTop: 195 });
+		$('.scrollField').animate({scrollTop: 310 });
 	});
 	textButton.addClass('textButton infoGui');
 	infoButtonsRow.addSubView(textButton);
@@ -330,7 +363,7 @@ function makeClusterInfo (_objIndex) {
 		opacity: 0.5
 	});
 
-	dnaButton.on('click',function () {
+	dnaButton.on('click',function() {
 		dnaButton.opacity = 1;
 		infoButton.opacity = 0.5;
 		textButton.opacity = 0.5;
@@ -342,7 +375,7 @@ function makeClusterInfo (_objIndex) {
 			curve: curve,
 			time: time
 		});
-		$('.scrollField').animate({scrollTop: 695 });
+		$('.scrollField').animate({scrollTop: 855 });
 	});
 	dnaButton.addClass('dnaButton infoGui');
 	infoButtonsRow.addSubView(dnaButton);
@@ -353,9 +386,9 @@ function makeClusterInfo (_objIndex) {
 		height: 174,
 		x: 102,
 		y: 60,
-		image: '../assets/db/images/' + db.clusters[_objIndex].images[0]
+		image: '../assets/db/images/ClusterInfoImage.jpg'
 	});
-	infoImage.addClass('infoImage');
+	infoImage.addClass('clusterInfoImage');
 	currCluster.addSubView(infoImage);
 
 	var colorLayer = new View({
@@ -365,25 +398,25 @@ function makeClusterInfo (_objIndex) {
 		y: 0,
 		opacity: 0
 	});
-	colorLayer.addClass('colorLayer');
+	colorLayer.addClass('clusterColorLayer');
 	infoImage.addSubView(colorLayer);
 
 	infoImage.originalFrame = infoImage.frame;
 	infoImage.originalFrame.y = 20;
-	// infoImage.on('click', function () {
+	// infoImage.on('click', function() {
 	// 	console.log('click the object');
 	// });
 
 	infoImage.dragger = new ui.Draggable(infoImage);
 	
-	infoImage.on(Events.DragMove, function () {
+	infoImage.on(Events.DragMove, function() {
 		// limit to one axis
 		// console.log(infoImage.x + ' / ' + infoImage.y);
 		infoImage.x = 102;
 		if(infoImage.y <= 20){
 			infoImage.y = 20;
 		}else if( infoImage.y >= 60){
-			infoImage._subViews[0].opacity = .5;
+			infoImage._subViews[0].opacity = 0.5;
 			infoImage.y = 60;
 		}else{
 			infoImage._subViews[0].opacity = 0;
@@ -391,7 +424,7 @@ function makeClusterInfo (_objIndex) {
 		// console.log(getYDistance(infoImage));
 	});
 	
-	infoImage.dragger.on(Events.DragEnd, function () {
+	infoImage.dragger.on(Events.DragEnd, function() {
 		if(infoImage.y >= 60){
 			closeClusterInfo(time, curve);
 		}
@@ -401,60 +434,77 @@ function makeClusterInfo (_objIndex) {
 					y: 20
 				},
 				curve: 'spring(200,10,10)'
-			})
+			});
 		}
 		infoImage._subViews[0].opacity = 0;
 	});
 
-
+	var scrollShadow = new View({
+		width: 386,
+		height: 5,
+		x:0,
+		y:250
+	});
+	scrollShadow.addClass('scrollShadow');
 	var scrollField = new ScrollView({
 		width: 386,
-		height: 600,
+		height: 400,
 		x: 0,
-		y: 254
+		y: 254,
 	});
+
+	ClusterInfo.properties = {
+		// opacity: 0,
+		x: 0,
+		y: 0,
+		width: 384,
+		height: 1440
+	};
+	ClusterInfo.addClass('clusterInfo');
+	scrollField.addSubView(ClusterInfo);
 	scrollField.addClass('scrollField');
 	currCluster.addSubView(scrollField);
+	currCluster.addSubView(scrollShadow);
 
-	scrollField.addSubView(addKeyValueView(_objIndex, 'name', 'Name', 0));
-	scrollField.addSubView(addKeyValueView(_objIndex, 'designer', 'Designer', 1));
-	scrollField.addSubView(addKeyValueView(_objIndex, 'genus', 'Gattung', 2));
-	scrollField.addSubView(addKeyValueView(_objIndex, 'format', 'Format', 3));
-	scrollField.addSubView(addKeyValueView(_objIndex, 'year', 'Jahr', 4));
-	scrollField.addSubView(addKeyValueView(_objIndex, 'country', 'Land', 5));
+	// // scrollField.addSubView(addKeyValueView(_objIndex, 'name', 'Name', 0));
+	// scrollField.addSubView(addKeyValueView(_objIndex, 'designer', 'Gestalter', 0));
+	// scrollField.addSubView(addKeyValueView(_objIndex, 'genus', 'Gattung', 1));
+	// scrollField.addSubView(addKeyValueView(_objIndex, 'format', 'Format', 2));
+	// scrollField.addSubView(addKeyValueView(_objIndex, 'year', 'Jahre', 3));
+	// scrollField.addSubView(addKeyValueView(_objIndex, 'country', 'Länder', 4));
 
-	var descriptionView = new View({
-		width: 348,
-		height: 400,
-		x: 18,
-		y: 200
-	});
-	descriptionView.addClass('descriptionView');
-	scrollField.addSubView(descriptionView);
+	// var descriptionView = new View({
+	// 	width: 348,
+	// 	height: 400,
+	// 	x: 18,
+	// 	y: 200
+	// });
+	// descriptionView.addClass('descriptionView');
+	// scrollField.addSubView(descriptionView);
 
-	descriptionView.addSubView(addInfoHeadline('Beschreibung'));
-	var descriptionText = new View({
-		width: 348,
-		height: 400,
-		x: 0,
-		y: 30,
-		html: db.clusters[_objIndex]['description']
-	});
-	descriptionText.addClass('descriptionText');
-	descriptionView.addSubView(descriptionText);
-	scrollField.addSubView(descriptionView);
+	// descriptionView.addSubView(addInfoHeadline('Beschreibung'));
+	// var descriptionText = new View({
+	// 	width: 348,
+	// 	height: 400,
+	// 	x: 0,
+	// 	y: 30,
+	// 	html: db.clusters[_objIndex].description
+	// });
+	// descriptionText.addClass('descriptionText');
+	// descriptionView.addSubView(descriptionText);
+	// scrollField.addSubView(descriptionView);
 
-	var dnaView = new View({
-		width: 348,
-		height: 800,
-		x: 18,
-		y: 700
-	});
+	// var dnaView = new View({
+	// 	width: 348,
+	// 	height: 800,
+	// 	x: 18,
+	// 	y: 700
+	// });
 
-	dnaView.addSubView(makeDNA(_objIndex, 0, 'Physikalische Erscheinung'));
-	dnaView.addSubView(makeDNA(_objIndex, 1, 'Assoziative Wirkung'));
-	dnaView.addClass('dnaView');
-	scrollField.addSubView(dnaView);
+	// dnaView.addSubView(makeDNA(_objIndex, 0, 'Physikalische Erscheinung'));
+	// dnaView.addSubView(makeDNA(_objIndex, 1, 'Assoziative Wirkung'));
+	// dnaView.addClass('dnaView');
+	// scrollField.addSubView(dnaView);
 
 	currCluster.addClass('infoView');
 	clusterFrame.addSubView(currCluster);
@@ -559,10 +609,11 @@ function addKeyValueView(_objIndex, _key, _keyText, _viewIndex){
 	return _currView;
 }
 
-$(document).ready(function () {
+$(document).ready(function() {
 	makeMenuBtn();
 	makePlusBtn();
 	makeSmallInfoBtn();
+	makeEditButtons();
 	Scene.addSubView(makeClusterInfo(0));
 	db.objects.map(makeDragObjects);
 	// dragObjArray(placeObjects);

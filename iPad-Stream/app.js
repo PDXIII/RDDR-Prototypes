@@ -4,7 +4,7 @@ Framer.config.animationPrecision = 60;
 for (var layerGroupName in PSD) {
 	window[layerGroupName] = PSD[layerGroupName];
 	PSD[layerGroupName].originalFrame = window[layerGroupName].frame;
-};
+}
 
 // variables
 
@@ -142,7 +142,6 @@ function addInfoHeadline (_headline) {
 
 function addToCluster () {
 	// console.log('add to cluster');
-
 	clusterLoop(0,-1,objIndex);
 }
 
@@ -151,22 +150,137 @@ function clusterLoop (_questionIndex, _pairIndex, _objIndex) {
 	utils.delay(150, function (){
 		if ( _questionIndex < db.questions.length-1){
 			if (_pairIndex < db.questions[_questionIndex].pairs.length-1){
-				console.log(db.questions[_questionIndex].main + ' / ' + db.questions[_questionIndex].pairs[_pairIndex] + ' / ' + objIndex);
+				// console.log(db.questions[_questionIndex].main + ' / ' + db.questions[_questionIndex].pairs[_pairIndex] + ' / ' + objIndex);
 				_pairIndex++;
 				makeClusterObj(_questionIndex, _pairIndex, _objIndex);
 			}
 			else{
 				_pairIndex = 0;
 				_questionIndex++;
-				console.log('Question: ' + _questionIndex)
+				// console.log('Question: ' + _questionIndex);
 				makeClusterObj(_questionIndex, _pairIndex, _objIndex);
 			}
 		}
 		else{
 			// _questionIndex = 0; 
 			console.log('ende im gelände');
+			makeClusterIcons();
 		}
 	});
+}
+
+function makeClusterIcons(){
+	var smallClusterIcons = new View({
+		x: 0,
+		y: 181,
+		width: 384,
+		height: 512
+	});
+
+	smallClusterIcons.addSubView(makeClusterQuestion());
+
+	var icons = new View({
+		x: 0,
+		y: 41,
+		width: smallClusterIcons.width,
+		height: smallClusterIcons.height
+	});
+
+	for (var i = 0; i < db.SmallClusterIcons.length; i++) {
+		console.log(db.SmallClusterIcons[i].name);
+		var _currView = new ImageView ({
+			opacity: 0,
+			image: '../assets/ClusterImages/' + db.SmallClusterIcons[i].image,
+			width: 81,
+			height: 81,
+			x: db.SmallClusterIcons[i].x,
+			y: db.SmallClusterIcons[i].y + 41
+		});
+		_currView.addClass('smallClusterIcon');
+		icons.addSubView(_currView);
+	};
+	smallClusterIcons.addSubView(icons);
+	Scene.addSubView(smallClusterIcons);
+
+	utils.delay(20, function () {
+		smallClusterIcons._subViews[0].scale = 1.5;
+		smallClusterIcons._subViews[0].animate({
+				properties: {
+					opacity: 1,
+					scale: 1
+				},
+				curve: startSpring
+			});
+		});
+	utils.delay(40, function () {
+		icons._subViews.forEach(makeIconsVisible);
+	});
+
+	icons._subViews[5].on('click', function(){
+		icons._subViews[5].scale = 0.7;
+		icons._subViews[5].animate({
+			properties: {
+				scale:1
+			},
+			curve: startSpring
+		});
+		utils.delay(200,function(){
+			icons._subViews.reverse().forEach(makeIconsInvisible);
+		});
+		utils.delay(1000, function (){
+			smallClusterIcons._subViews[0].animate({
+				properties:{
+					opacity: 0,
+					scale: 1.5
+				},
+				time: 200,
+				curve: 'ease-in-out'
+			});
+		});
+		utils.delay(2000, function () {
+			// smallClusterIcons.destroy();
+			makeObj();
+		});
+	});
+}
+
+var makeIconsVisible = function (_subView, index) {
+	utils.delay(200 * index, function () {
+		_subView.scale = 0.1;
+		_subView.animate({
+				properties: {
+					scale: 1,
+					opacity: 1
+				},
+				curve: globalAnimationCurve
+			});
+	});
+}
+
+var makeIconsInvisible = function (_subView, index) {
+	utils.delay(200 * index, function () {
+		_subView.animate({
+				properties: {
+					scale: 0,
+					opacity: 0
+				},
+				curve: globalAnimationCurve
+			});
+	});
+}
+
+function makeClusterQuestion () {
+	// console.log(_questionIndex);
+	var mainQuestion = new View({
+		opacity: 0,
+		width: 384,
+		height: 60,
+		x: 0,
+		y: 20,
+		html: 'Welcher Cluster?'
+	});
+	mainQuestion.addClass('mainQuestion');
+	return mainQuestion;
 }
 
 function animateObject (_currObj) {
@@ -183,7 +297,7 @@ function animateObject (_currObj) {
 			// oder label
 			_currObj._subViews[1]._subViews[1].animate({
 				properties:{
-					opacity: .5,
+					opacity: 0.5,
 					scale: 1
 				},
 				curve: startCurve,
@@ -236,7 +350,7 @@ function animateClusterObject (_currObj) {
 			// oder label
 			_currObj._subViews[1]._subViews[1].animate({
 				properties:{
-					opacity: .5,
+					opacity: 0.5,
 					scale: 1
 				},
 				curve: startCurve,
@@ -284,7 +398,7 @@ function animateWords (_dragObj, _direction) {
 		distance = getXDistance(_dragObj);
 			// tint and untint the _dragObj colorLayer
 		if (distance >= maxDistance - triggerOffset) {
-			_dragObj._subViews[1].opacity = .5;
+			_dragObj._subViews[1].opacity = 0.5;
 		}
 		 else{
 			_dragObj._subViews[1].opacity = 0;
@@ -308,7 +422,7 @@ function animateWords (_dragObj, _direction) {
 		if(direction[1] === 'up') {
 				// tint and untint the _dragObj colorLayer
 			if (distance >= 70 && distance <= 110 || distance >= maxDistance - triggerOffset) {
-				_dragObj._subViews[1].opacity = .5;
+				_dragObj._subViews[1].opacity = 0.5;
 			}
 			 else{
 				_dragObj._subViews[1].opacity = 0;
@@ -327,7 +441,7 @@ function animateWords (_dragObj, _direction) {
 		else if (direction[1] === 'down') {
 				// tint and untint the _dragObj colorLayer
 			if (distance >= maxDistance - triggerOffset) {
-				_dragObj._subViews[1].opacity = .5;
+				_dragObj._subViews[1].opacity = 0.5;
 			}
 			 else{
 				_dragObj._subViews[1].opacity = 0;
@@ -359,13 +473,13 @@ function animateResult (_results) {
 		case 'right':
 			_results._subViews.reverse().forEach(makeResultVisible);
 			break;
-	};
+	}
 	utils.delay(3000, function () {
 		_results._subViews.reverse().forEach(makeResultInVisible);
 		utils.delay(400, function () {
 			nextObj();
 		});
-	})
+	});
 }
 
 // is called by function dragObjDisappears()
@@ -400,8 +514,9 @@ function bigAnswer (_answers) {
 	});
 }
 
-function cangeHeadline (){
-	TopBar._subViews[0].animate({
+function changeHeadline (){
+	console.log('change H2');
+	TopBar._subViews[0]._subViews[1].animate({
 		properties: {
 			y: 0
 		},
@@ -410,7 +525,7 @@ function cangeHeadline (){
 	});
 
 	utils.delay(100, function (){
-		TopBar._subViews[2].animate({
+		TopBar._subViews[0]._subViews[2].animate({
 			properties: {
 				y: 50
 			},
@@ -420,8 +535,8 @@ function cangeHeadline (){
 	});
 }
 
-function cangeHeadlineBack (){
-	TopBar._subViews[2].animate({
+function changeHeadlineBack (){
+	TopBar._subViews[0]._subViews[2].animate({
 		properties: {
 			y: 80
 		},
@@ -430,9 +545,9 @@ function cangeHeadlineBack (){
 	});
 
 	utils.delay(100, function (){
-		TopBar._subViews[0].animate({
+		TopBar._subViews[0]._subViews[1].animate({
 			properties: {
-				y: 50
+				y: 57
 			},
 			curve: startCurve,
 			time: startTime
@@ -452,7 +567,7 @@ function changeMainQuestion (_mainQuestion) {
 	});
 	// console.log(_mainQuestion);
 	utils.delay(200, function () {
-		_mainQuestion.html = 'Deine Antwort:'
+		_mainQuestion.html = 'Deine Antwort:';
 		utils.delay(20, function () {
 			_mainQuestion.animate({
 				properties: {
@@ -561,7 +676,7 @@ function clusterDragObjDisappears (_dragObj, _questionIndex, _pairIndex, _objInd
 	}
 
 	utils.delay(1000, function(){
-		clusterLoop(_questionIndex, _pairIndex, _objIndex)
+		clusterLoop(_questionIndex, _pairIndex, _objIndex);
 	});
 }
 
@@ -580,7 +695,7 @@ function dragObjReset (_dragObj) {
 			animateToSmallType(_dragObj.superView._subViews[1]._subViews[0], '24px');
 			break;
 		case 'right':
-			animateToSmallType(_dragObj.superView._subViews[1]._subViews[2]), '24px';
+			animateToSmallType(_dragObj.superView._subViews[1]._subViews[2], '24px');
 			break;
 		case 'up':
 			animateToSmallType(_dragObj.superView._subViews[2]._subViews[1], '0px');
@@ -621,7 +736,6 @@ function getDirection (_dragObj) {
 			direction.push('down');
 		}
 	}
-	directionSet = true;
 	// console.log(direction);
 	return direction;
 }
@@ -633,28 +747,28 @@ var getFontSize = function (_distance, _minDistance, _maxDistance, _minFontSize,
 	attrFontSize = attrFontSize + 'px';
 	// console.log(attrFontSize);
 	return attrFontSize;
-}
+};
 
 var getScaleFactor = function (_distance, _low2) {
 	var value = _distance;
 	var low1 = 0;
 	var high1 = maxDistance;
-	// var low2 = .5;
+	// var low2 = 0.5;
 	var low2 = _low2;
 	var high2 = 1;
 
 	return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
-}
+};
 
 // is called by function getDirection()
 function getXDistance (_dragObj) {
-	var xDistance = Math.abs(_dragObj.originalFrame.x - _dragObj.x)
+	var xDistance = Math.abs(_dragObj.originalFrame.x - _dragObj.x);
 	return xDistance;
 }
 
 // is called by function getDirection()
 function getYDistance (_dragObj) {
-	var yDistance = Math.abs(_dragObj.originalFrame.y - _dragObj.y)
+	var yDistance = Math.abs(_dragObj.originalFrame.y - _dragObj.y);
 	return yDistance;
 }
 
@@ -984,7 +1098,7 @@ function makeInfo (_objIndex) {
 		if(infoImage.y <= 20){
 			infoImage.y = 20;
 		}else if( infoImage.y >= 60){
-			infoImage._subViews[0].opacity = .5;
+			infoImage._subViews[0].opacity = 0.5;
 			infoImage.y = 60;
 		}else{
 			infoImage._subViews[0].opacity = 0;
@@ -1002,7 +1116,7 @@ function makeInfo (_objIndex) {
 					y: 20
 				},
 				curve: 'spring(200,10,10)'
-			})
+			});
 		}
 		infoImage._subViews[0].opacity = 0;
 	});
@@ -1017,12 +1131,12 @@ function makeInfo (_objIndex) {
 	scrollField.addClass('scrollField');
 	currInfo.addSubView(scrollField);
 
-	scrollField.addSubView(addKeyValueView(_objIndex, 'name', 'Name', 0));
-	scrollField.addSubView(addKeyValueView(_objIndex, 'designer', 'Designer', 1));
-	scrollField.addSubView(addKeyValueView(_objIndex, 'genus', 'Gattung', 2));
-	scrollField.addSubView(addKeyValueView(_objIndex, 'format', 'Format', 3));
-	scrollField.addSubView(addKeyValueView(_objIndex, 'year', 'Jahr', 4));
-	scrollField.addSubView(addKeyValueView(_objIndex, 'country', 'Land', 5));
+	// scrollField.addSubView(addKeyValueView(_objIndex, 'name', 'Name', 0));
+	scrollField.addSubView(addKeyValueView(_objIndex, 'designer', 'Gestalter', 0));
+	scrollField.addSubView(addKeyValueView(_objIndex, 'genus', 'Gattung', 1));
+	scrollField.addSubView(addKeyValueView(_objIndex, 'format', 'Format', 2));
+	scrollField.addSubView(addKeyValueView(_objIndex, 'year', 'Jahr', 3));
+	scrollField.addSubView(addKeyValueView(_objIndex, 'country', 'Land', 4));
 
 	var descriptionView = new View({
 		width: 348,
@@ -1039,7 +1153,7 @@ function makeInfo (_objIndex) {
 		height: 400,
 		x: 0,
 		y: 30,
-		html: db.objects[_objIndex]['description']
+		html: db.objects[_objIndex].description
 	});
 	descriptionText.addClass('descriptionText');
 	descriptionView.addSubView(descriptionText);
@@ -1065,7 +1179,7 @@ function makeInfo (_objIndex) {
 // is called by function animateResult()
 var makeItInvisible = function ( subView, index) {
 	subView.opacity = 0;
-}
+};
 
 // called by function makeObj()
 function makeMainQuestion (_questionIndex) {
@@ -1097,6 +1211,7 @@ function makeMenuBtn () {
 
 function makeDragClusterObj (_questionIndex, _pairIndex, _objIndex) {
 	// console.log('okay makeDragClusterObj');
+	var distance;
 	var dragObject = new View({
 		// origin: '50% 50',
 		width: 236,
@@ -1143,7 +1258,7 @@ function makeDragClusterObj (_questionIndex, _pairIndex, _objIndex) {
 		distance = getXDistance(dragObject);
 			// tint and untint the dragObject colorLayer
 		if (distance >= maxDistance - triggerOffset) {
-			dragObject._subViews[1].opacity = .5;
+			dragObject._subViews[1].opacity = 0.5;
 		}
 		 else{
 			dragObject._subViews[1].opacity = 0;
@@ -1218,7 +1333,7 @@ function makeObj () {
 		html: db.objects[objIndex].name
 	});
 	objName.addClass('objName');
-	TopBar.addSubView(objName);
+	TopBar._subViews[0].addSubView(objName);
 
 	var currObj = new View({
 		width: 384,
@@ -1240,11 +1355,11 @@ function makeObj () {
 
 	animateObject(currObj);
 	return currObj;
-};
+}
 
 // called by function makeObj()
 function makeResults (_objIndex, _questionIndex, _pairIndex) {
-	var resultVotes = db.objects[_objIndex].dna[_questionIndex].pairs[_pairIndex]
+	var resultVotes = db.objects[_objIndex].dna[_questionIndex].pairs[_pairIndex];
 	var resultPercent = returnPercent(resultVotes);
 	var results = new View({
 		width: 384,
@@ -1263,7 +1378,7 @@ function makeResults (_objIndex, _questionIndex, _pairIndex) {
 		scale: 0,
 		opacity: 0
 	});
-	addResultBG(resultLeft, resultVotes[0], resultPercent[0])
+	addResultBG(resultLeft, resultVotes[0], resultPercent[0]);
 	resultLeft.addClass('result big');
 	results.addSubView(resultLeft);
 
@@ -1289,24 +1404,24 @@ function makeResults (_objIndex, _questionIndex, _pairIndex) {
 		scale: 0,
 		opacity: 0
 	});
-	addResultBG(resultRight, resultVotes[2], resultPercent[2])
+	addResultBG(resultRight, resultVotes[2], resultPercent[2]);
 	resultRight.addClass('result big');
 	results.addSubView(resultRight);
 
-	return results
+	return results;
 }
 
 // is called by function animateResult()
 var makeResultVisible = function ( _subView, index) {
-	var _tempScale = 1
+	var _tempScale = 1;
 	if(index === 0) {
 		_subView.addClass('activeResult');
 	}
 	if(index === 1) {
-		_tempScale = .75;
+		_tempScale = 0.75;
 	}
 	utils.delay(100 * index, function () {
-		_subView.scale = .1;
+		_subView.scale = 0.1;
 		_subView.animate({
 				properties: {
 					scale: _tempScale,
@@ -1314,8 +1429,8 @@ var makeResultVisible = function ( _subView, index) {
 				},
 				curve: globalAnimationCurve
 			});
-	})
-}
+	});
+};
 
 // is called by function animateResult()
 var makeResultInVisible = function ( _subView, index) {
@@ -1328,8 +1443,8 @@ var makeResultInVisible = function ( _subView, index) {
 				},
 				curve: globalAnimationCurve
 			});
-	})
-}
+	});
+};
 
 
 function nextObj () {
@@ -1351,13 +1466,13 @@ function openMenu (_time, _curve) {
 }
 
 function showInfo(){
-	cangeHeadline();
+	changeHeadline();
 	Scene._subViews[1]._subViews[5].animate({
 		properties: {
 			y: 0
 		},
 		curve: startCurve,
-		time: startTime
+		time: startTime + 150
 	});
 	Scene._subViews[1]._subViews[5]._subViews[0]._subViews[2].animate({
 		properties: {
@@ -1373,8 +1488,9 @@ function hideInfo(){
 			y: 600
 		},
 		curve: startCurve,
-		time: startTime
+		time: startTime + 150
 	});
+	changeHeadlineBack();
 }
 
 function clearScene () {

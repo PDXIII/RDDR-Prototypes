@@ -141,6 +141,11 @@
 	border-radius: 50%;
 }
 
+.clusterColorLayer {
+	background-color: @lightPink;
+	border-radius: 10%;
+}
+
 .action {
 	.regularTypeBlue;
 	font-size: 24px;
@@ -148,6 +153,11 @@
 
 .infoImage {
 	border-radius: 50%;
+	.objectShadow(@lightBlue);
+}
+
+.clusterInfoImage{
+	border-radius: 10%;
 	.objectShadow(@lightBlue);
 }
 
@@ -192,3 +202,27 @@
 .btn{
 	cursor: pointer;
 }
+
+.keyValueView {
+	overflow: hidden;
+	width: 100%;
+}
+
+.scrollShadow{
+	overflow: hidden; 
+	background-color: @creme;
+	box-shadow: 0px -1px 0px 1px @creme, 0px 1px 3px 0px @lightBlue;
+}
+
+.smallClusterIcon + .smallClusterIcon{
+	.objectShadow(@lightBlue);
+	border-radius: 18px;
+}
+// .smallClusterIcon:first-child{
+// 	.objectShadow(@creme);
+// 	border-radius: 0px;
+// }
+
+// .clusterScrollField {
+// 	background: url(../iPad-Cluster/images/ClusterInfo.png);
+// }
