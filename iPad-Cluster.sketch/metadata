@@ -34,10 +34,16 @@
 		<string>PTSans-NarrowBold</string>
 		<string>PTSans-Narrow</string>
 		<string>PTSans-NarrowBold</string>
+		<string>PTMono-Regular</string>
+		<string>PTSans-NarrowBold</string>
+		<string>PTSans-NarrowBold</string>
+		<string>PTMono-Regular</string>
+		<string>PTSans-NarrowBold</string>
+		<string>PTMono-Regular</string>
 		<string>HelveticaNeue-Light</string>
 	</array>
 	<key>length</key>
-	<integer>420194</integer>
+	<integer>428532</integer>
 	<key>version</key>
 	<integer>18</integer>
 </dict>

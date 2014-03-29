@@ -10,87 +10,101 @@ for (var layerGroupName in PSD) {
 var menuVisible = false;
 var stackVisible = false;
 var clusterInfoVisible = false;
-var dragObjArray = [];
+var stackObjArray = [];
+var tipObjArray = [];
 var infoGuiSize = [110, 30, 10]; // width, height, margin of a button
 var time = 250;
 var curve = 'ease-in-out';
 
-function makeDragObjects (_object){
-		var currDragObj = new ImageView({
-			width: 50,
-			height: 50,
-			x: 50,
-			y: 50,
-			image: '../assets/db/images/' + _object.images[0]
+function makeDragObjects (_object, _index){
+	var currDragObj = new ImageView({
+		width: 50,
+		height: 50,
+		x: _object.x,
+		y: _object.y,
+		image: '../assets/db/images/' + _object.images[0]
+	});
+	currDragObj.addClass('dragObject');
+	var colorLayer = new View({
+		opacity: 0,
+		width: 50,
+		height: 50,
+		x: 0,
+		y: 0,
+	});
+	colorLayer.addClass('colorLayer');
+	currDragObj.addSubView(colorLayer);
+	currDragObj.dragger = new ui.Draggable(currDragObj);
+	currDragObj.on(Events.DragStart, function(){
+		currDragObj.bringToFront();
+		// event.stopPropagation();
+		currDragObj.scale = 0.7;
+		currDragObj.animate({
+			properties: {
+				scale: 1.2,
+				opacity: 0.8
+			},
+			curve: 'spring(1000, 10, 100)'
 		});
-		currDragObj.addClass('dragObject');
-		var colorLayer = new View({
-			opacity: 0,
-			width: 50,
-			height: 50,
-			x: 0,
-			y: 0,
-		});
-		colorLayer.addClass('colorLayer');
-		currDragObj.addSubView(colorLayer);
-
-		currDragObj.dragger = new ui.Draggable(currDragObj);
-		currDragObj.on(Events.DragStart, function(){
-			currDragObj.bringToFront();
-			// event.stopPropagation();
-			currDragObj.scale = 0.7;
+	});
+	currDragObj.on(Events.DragMove, function(){
+		if(currDragObj.x < -5
+			|| currDragObj.x > 340
+			|| currDragObj.y < -5
+			|| currDragObj.y > 600){
+			currDragObj._subViews[0].opacity = 0.5;
+		}
+		else if(currDragObj.x > -5
+			&& currDragObj.x < 340
+			&& currDragObj.y > -5
+			&& currDragObj.y < 600){
+			currDragObj._subViews[0].opacity = 0;
+		}
+		console.log(_object.name + ' / ' + currDragObj.x + ' / ' + currDragObj.y);
+	});
+	currDragObj.on(Events.DragEnd, function(){
+		if(currDragObj.x < -5
+			|| currDragObj.x > 340
+			|| currDragObj.y < -5
+			|| currDragObj.y > 600){
 			currDragObj.animate({
 				properties: {
-					scale: 1.2,
-					opacity: 0.8
+					scale: 2,
+					opacity: 0
 				},
 				curve: 'spring(100, 10, 100)'
 			});
-		});
-		currDragObj.on(Events.DragMove, function(){
-			if(currDragObj.x < -25
-				|| currDragObj.x > 360
-				|| currDragObj.y < -25
-				|| currDragObj.y > 455){
-				currDragObj._subViews[0].opacity = 0.5;
-			}
-			else if(currDragObj.x > -25
-				&& currDragObj.x < 360
-				&& currDragObj.y > -25
-				&& currDragObj.y < 455){
-				currDragObj._subViews[0].opacity = 0;
-			}
-			console.log(currDragObj.x + ' / ' + currDragObj.y);
-		});
-		currDragObj.on(Events.DragEnd, function(){
-			if(currDragObj.x < -25
-				|| currDragObj.x > 360
-				|| currDragObj.y < -25
-				|| currDragObj.y > 455){
-				currDragObj.animate({
-					properties: {
-						scale: 2,
-						opacity: 0
-					},
-					curve: 'spring(100, 10, 100)'
-				});
-				// utils.delay(500, function(){
-				// 	currDragObj.destroy();
-				// 	});
-			}
-			else{
-				currDragObj.animate({
-					properties: {
-						scale: 1,
-						opacity: 1
-					},
-					curve: 'spring(100, 10, 100)'
-				});
-			}
-		});
+			// utils.delay(500, function(){
+			// 	currDragObj.destroy();
+			// 	});
+		}
+		else{
+			currDragObj.animate({
+				properties: {
+					scale: 1,
+					opacity: 1
+				},
+				curve: 'spring(100, 10, 100)'
+			});
+		}
+	});
+	if (_index > 8 && _index <= 13){
+		stackObjArray.push(currDragObj);
+		// currDragObj.opacity = 0.5;
+	}
+	else if (_index >13){
+		tipObjArray.push(currDragObj);
+		currDragObj.y += 100;
+	}
+	ObjectSpace.addSubView(currDragObj);
+	// dragObjArray.push(currDragObj);
+}
 
-		ObjectSpace.addSubView(currDragObj);
-		dragObjArray.push(currDragObj);
+var moveObjUp = function(_object){
+	_object.y -= 100;
+}
+var moveObjDown = function(_object){
+	_object.y += 100;
 }
 
 function openStack(_time, _curve){
@@ -103,7 +117,7 @@ function openStack(_time, _curve){
 	});
 	ObjectSpace.animate({
 		properties: {
-			y: ObjectSpace.originalFrame.y - 80
+			y: ObjectSpace.originalFrame.y - 130
 		},
 		time: _time,
 		curve: _curve
@@ -187,42 +201,66 @@ function closeMenu (_time, _curve) {
 }
 
 function showKeyBoard() {
+	Writing.opacity = 0;
+	Writing.y = 78;
 	Writing.animate({
 		properties: {
-			y: 355
+			opacity: 1
 		},
 		curve: 'ease-in-out',
 		time: 100
+	});
+	KeyBoard.animate({
+		properties: {
+			y: 282
+		},
+		curve: 'ease-in-out',
+		time: 200
 	});
 }
 
 function hideKeyBoard() {
 	Writing.animate({
 		properties: {
-			y: Writing.originalFrame.y
+			opacity: 0
 		},
 		curve: 'ease-in-out',
 		time: 100
+	});
+	Writing.y =  Writing.originalFrame.y;
+	KeyBoard.animate({
+		properties: {
+			y: KeyBoard.originalFrame.y
+		},
+		time: 200,
+		curve: 'ease-in-out'
 	});
 }
 
 function makeEditButtons (argument) {
 	Merkmal.on('click', function(){
 		showKeyBoard();
-		$('.scrollField').animate({scrollTop: 300 });
+		WorkBG.y = 0;
+		// $('.scrollField').animate({scrollTop: 300 });
 	});
+	Merkmal.addClass('textField');
 	Konzept.on('click', function(){
 		showKeyBoard();
-		$('.scrollField').animate({scrollTop: 433 });
+		WorkBG.y = -410;
+		// $('.scrollField').animate({scrollTop: 433 });
 	});
+	Konzept.addClass('textField');
 	Kritik.on('click', function(){
 		showKeyBoard();
-		$('.scrollField').animate({scrollTop: 620 });
+		WorkBG.y = -820;
+		// $('.scrollField').animate({scrollTop: 620 });
 	});
-
+	Kritik.addClass('textField');
 	FertigBtn.on('click', function(){
 		hideKeyBoard();
+		WorkBG.y = WorkBG.originalFrame.y;
 	})
+	FertigBtn.addClass('btn');
 }
 
 function makePlusBtn() {
@@ -375,7 +413,7 @@ function makeClusterInfo (_objIndex) {
 			curve: curve,
 			time: time
 		});
-		$('.scrollField').animate({scrollTop: 855 });
+		$('.scrollField').animate({scrollTop: 890 });
 	});
 	dnaButton.addClass('dnaButton infoGui');
 	infoButtonsRow.addSubView(dnaButton);
@@ -529,7 +567,7 @@ function addInfoHeadline (_headline) {
 	var _currView = new View({
 		width: 348,
 		height: 30,
-		x: 0,
+		X: 0,
 		y: 0,
 		html: _headline
 	});
@@ -609,10 +647,47 @@ function addKeyValueView(_objIndex, _key, _keyText, _viewIndex){
 	return _currView;
 }
 
+function makeObjectStack() {
+	var stackButton = new View({
+		x: 75,
+		y: 455,
+		width: infoGuiSize[0],
+		height: infoGuiSize[1],
+		html: 'Stack'
+	});
+	stackButton.addClass('infoButton infoGui');
+	var tipButton = new View({
+		opacity: 0.5,
+		x: 205,
+		y: 455,
+		width: infoGuiSize[0],
+		height: infoGuiSize[1],
+		html: 'Vorschläge'
+	});
+	tipButton.addClass('infoButton infoGui');
+	ObjectSpace.addSubView(stackButton);
+	ObjectSpace.addSubView(tipButton);
+
+
+	stackButton.on('click', function (){
+		tipButton.opacity = 0.5;
+		stackButton.opacity = 1;
+		stackObjArray.map(moveObjUp);
+		tipObjArray.map(moveObjDown);
+	});
+	tipButton.on('click', function (){
+		stackButton.opacity = 0.5;
+		tipButton.opacity = 1;
+		stackObjArray.map(moveObjDown);
+		tipObjArray.map(moveObjUp);
+	});
+}
+
 $(document).ready(function() {
 	makeMenuBtn();
 	makePlusBtn();
 	makeSmallInfoBtn();
+	makeObjectStack();
 	makeEditButtons();
 	Scene.addSubView(makeClusterInfo(0));
 	db.objects.map(makeDragObjects);

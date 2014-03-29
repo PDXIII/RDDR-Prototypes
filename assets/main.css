@@ -179,6 +179,9 @@
 .infoView {
   background-color: #fffaf2;
 }
+.textField {
+  cursor: text;
+}
 .descriptionText {
   line-height: 1.2em;
 }

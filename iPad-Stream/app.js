@@ -163,7 +163,7 @@ function clusterLoop (_questionIndex, _pairIndex, _objIndex) {
 		}
 		else{
 			// _questionIndex = 0; 
-			console.log('ende im gelände');
+			// console.log('ende im gelände');
 			makeClusterIcons();
 		}
 	});
@@ -196,7 +196,7 @@ function makeClusterIcons(){
 			x: db.SmallClusterIcons[i].x,
 			y: db.SmallClusterIcons[i].y + 41
 		});
-		_currView.addClass('smallClusterIcon');
+		_currView.addClass('smallClusterIcon btn');
 		icons.addSubView(_currView);
 	};
 	smallClusterIcons.addSubView(icons);
