@@ -580,17 +580,6 @@ function changeMainQuestion (_mainQuestion) {
 	});
 }
 
-function closeMenu (_time, _curve) {
-	Scene.animate({
-		properties: {
-			x: Scene.originalFrame.x
-		},
-		time: _time,
-		curve: _curve
-	});
-	menuVisible = false;
-}
-
 function dragObjDisappears (_dragObj) {
 	switch (globalDirection[1]) {
 		case 'left':
@@ -1195,20 +1184,6 @@ function makeMainQuestion (_questionIndex) {
 	return mainQuestion;
 }
 
-function makeMenuBtn () {
-	MenuButton.on('click', function () {
-		var time = 250;
-		var curve = 'ease-in-out';
-		if(!menuVisible) {
-			openMenu(time, curve);
-		}
-		else{
-			closeMenu(time, curve);
-		}
-	});
-	MenuButton.addClass('btn');
-}
-
 function makeDragClusterObj (_questionIndex, _pairIndex, _objIndex) {
 	// console.log('okay makeDragClusterObj');
 	var distance;
@@ -1454,16 +1429,7 @@ function nextObj () {
 	});
 }
 
-function openMenu (_time, _curve) {
-	Scene.animate({
-		properties: {
-			x: Scene.originalFrame.x + 300
-		},
-		time: _time,
-		curve: _curve
-	});
-	menuVisible = true;
-}
+
 
 function showInfo(){
 	changeHeadline();
@@ -1524,6 +1490,7 @@ function clearScene () {
 }
 
 $(document).ready(function () {
+	makeMenu();
 	makeMenuBtn();
 	designObject = makeObj();
 });

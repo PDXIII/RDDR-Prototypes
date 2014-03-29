@@ -178,27 +178,6 @@ function closeClusterInfo(_time, _curve){
 	clusterInfoVisible = false;
 }
 
-function openMenu (_time, _curve) {
-	Scene.animate({
-		properties: {
-			x: Scene.originalFrame.x + 300
-		},
-		time: _time,
-		curve: _curve
-	});
-	menuVisible = true;
-}
-
-function closeMenu (_time, _curve) {
-	Scene.animate({
-		properties: {
-			x: Scene.originalFrame.x
-		},
-		time: _time,
-		curve: _curve
-	});
-	menuVisible = false;
-}
 
 function showKeyBoard() {
 	Writing.opacity = 0;
@@ -288,24 +267,6 @@ function makeSmallInfoBtn() {
 		}
 	});
 	SmallInfoButton.addClass('btn');
-}
-
-function makeMenuBtn() {
-	MenuButton.on('click', function() {
-		var time = 250;
-		var curve = 'ease-in-out';
-		if(!menuVisible) {
-			openMenu(time, curve);
-		}
-		else{
-			closeMenu(time, curve);
-		}
-	});
-	MenuButton.addClass('btn');
-}
-
-function placeObjects () {
-
 }
 
 function makeClusterInfo (_objIndex) {
@@ -683,7 +644,10 @@ function makeObjectStack() {
 	});
 }
 
+
+
 $(document).ready(function() {
+	makeMenu();
 	makeMenuBtn();
 	makePlusBtn();
 	makeSmallInfoBtn();

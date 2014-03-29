@@ -1,4 +1,5 @@
 @import 'fonts.less';
+@import 'font-awesome-4.0.3/less/font-awesome.less';
 
 @lightBlue : #172d4d;
 @darkBlue : #001533;
@@ -57,7 +58,7 @@
 .regularTypeCreme{
 	color: @creme;
 	font-family: 'PT_Sans-Narrow Regular';
-	letter-spacing: .04em;
+	letter-spacing: .06em;
 }
 
 .mainQuestion {
@@ -222,11 +223,14 @@
 	.objectShadow(@lightBlue);
 	border-radius: 18px;
 }
-// .smallClusterIcon:first-child{
-// 	.objectShadow(@creme);
-// 	border-radius: 0px;
-// }
 
-// .clusterScrollField {
-// 	background: url(../iPad-Cluster/images/ClusterInfo.png);
-// }
+.nav{
+	i{
+		color: @creme;
+	}
+	a{
+		text-decoration: none;
+		.regularTypeCreme;
+		font-size: 18px;
+	}
+}

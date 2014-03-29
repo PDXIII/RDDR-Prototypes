@@ -13,9 +13,9 @@ window.FramerPS['iPad-Stream'] = [
       {
         "name": "Application",
         "layerFrame": {
-          "x": 447,
+          "x": 397,
           "y": 1,
-          "width": 403,
+          "width": 453,
           "height": 722
         },
         "maskFrame": {
@@ -27,9 +27,9 @@ window.FramerPS['iPad-Stream'] = [
         "image": {
           "path": "images/Application.png",
           "frame": {
-            "x": 447,
+            "x": 397,
             "y": 1,
-            "width": 403,
+            "width": 453,
             "height": 722
           }
         },
@@ -110,10 +110,10 @@ window.FramerPS['iPad-Stream'] = [
                   {
                     "name": "H1",
                     "layerFrame": {
-                      "x": 447,
-                      "y": 103,
-                      "width": 388,
-                      "height": 78
+                      "x": -99764,
+                      "y": -100071,
+                      "width": 30,
+                      "height": 48
                     },
                     "maskFrame": null,
                     "children": [
@@ -169,18 +169,18 @@ window.FramerPS['iPad-Stream'] = [
             "name": "MainMenu",
             "layerFrame": {
               "x": 447,
-              "y": 1,
-              "width": 403,
-              "height": 722
+              "y": 102,
+              "width": 372,
+              "height": 621
             },
             "maskFrame": null,
             "image": {
               "path": "images/MainMenu.png",
               "frame": {
                 "x": 447,
-                "y": 1,
-                "width": 403,
-                "height": 722
+                "y": 102,
+                "width": 372,
+                "height": 621
               }
             },
             "imageType": "png",
